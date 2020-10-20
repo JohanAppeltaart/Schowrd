@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+      "ggg",
+      "csc",
+      "bbb"
+    ],
+    "key":{
+      "g":{
+        "item": "schowrd:banana_goo"
+      },
+      "c":{
+        "item":"schowrd:caramel"
+      },
+      "s":{
+        "item":"schowrd:caramel_banana"
+      },
+      "b":{
+        "item":"schowrd:banana"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:banana_cake",
+      "count": 1
+    }
+  }

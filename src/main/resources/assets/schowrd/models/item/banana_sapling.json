@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "schowrd:blocks/banana_sapling"
+  }
+}

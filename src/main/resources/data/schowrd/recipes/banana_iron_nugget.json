@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "schowrd:banana_iron"
+    }
+  ],
+  "result": {
+    "item": "schowrd:banana_iron_nugget",
+    "count": 9
+  }
+}
