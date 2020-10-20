@@ -7,7 +7,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ActionResultType;
@@ -19,7 +21,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class BananaChest extends Block {
+import javax.annotation.Nullable;
+import java.util.Optional;
+
+public class BananaChest extends ChestBlock {
 
 
 	public BananaChest() {
@@ -28,11 +33,16 @@ public class BananaChest extends Block {
 				.slipperiness(1.5f)
 				.sound(SoundType.WOOD)
 				.harvestTool(ToolType.AXE)
-//				,
-//				()-> {return TileEntityType.CHEST;
-//		}
+				,
+				()-> {return TileEntityType.CHEST;
+		}
 		);
 	}
+
+//	@Nullable
+//	public static IInventory getChestInventory(ChestBlock chest, BlockState state, World world, BlockPos pos, boolean override) {
+//		return chest.combine(state, world, pos, override).<Optional<IInventory>>apply(INVENTORY_MERGER).orElse((IInventory)null);
+//	}
 
 	@Override
 	public boolean hasTileEntity(BlockState state){
@@ -56,13 +66,24 @@ public class BananaChest extends Block {
 		return ActionResultType.FAIL;
 	}
 
-	@Override
+//	@Override
+//	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+//		if(state.getBlock() != newState.getBlock()){
+//			TileEntity te = worldIn.getTileEntity(pos);
+//			if(te instanceof BananaChestTileEntity){
+//				InventoryHelper.dropItems(worldIn,pos,((BananaChestTileEntity).te).getItems());
+//			}
+//		}
+//	}
 	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		if(state.getBlock() != newState.getBlock()){
-			TileEntity te = worldIn.getTileEntity(pos);
-			if(te instanceof BananaChestTileEntity){
-				InventoryHelper.dropItems(worldIn,pos,((BananaChestTileEntity).te).getItems());
+		if (!state.isIn(newState.getBlock())) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			if (tileentity instanceof IInventory) {
+				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory)tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
 			}
+
+			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
 }

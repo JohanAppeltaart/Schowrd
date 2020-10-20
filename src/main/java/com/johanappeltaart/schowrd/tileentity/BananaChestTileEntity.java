@@ -6,12 +6,16 @@ import com.johanappeltaart.schowrd.init.ModTileEntityTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.ChestType;
+import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -88,12 +92,27 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
 //        }
 //    }
 
-    private void playSound(SoundEvent sound){
-        double dx = (double)this.pos.getX() + 0.5D;
-        double dy = (double)this.pos.getY() + 0.5D;
-        double dz = (double)this.pos.getZ() + 0.5D;
-        this.world.playSound((PlayerEntity),null,dx,dy,dz,sound, SoundCategory.BLOCKS,0.5f,this.world.rand.nextFloat()*0.1f+0.9f);
+//    private void playSound(SoundEvent sound){
+//        double dx = (double)this.pos.getX() + 0.5D;
+//        double dy = (double)this.pos.getY() + 0.5D;
+//        double dz = (double)this.pos.getZ() + 0.5D;
+//        this.world.playSound((PlayerEntity)null,dx,dy,dz,sound, SoundCategory.BLOCKS,0.5f,this.world.rand.nextFloat()*0.1f+0.9f);
+//    }
+private void playSound(SoundEvent soundIn) {
+    ChestType chesttype = this.getBlockState().get(ChestBlock.TYPE);
+    if (chesttype != ChestType.LEFT) {
+        double d0 = (double)this.pos.getX() + 0.5D;
+        double d1 = (double)this.pos.getY() + 0.5D;
+        double d2 = (double)this.pos.getZ() + 0.5D;
+        if (chesttype == ChestType.RIGHT) {
+            Direction direction = ChestBlock.getDirectionToAttached(this.getBlockState());
+            d0 += (double)direction.getXOffset() * 0.5D;
+            d2 += (double)direction.getZOffset() * 0.5D;
+        }
+
+        this.world.playSound((PlayerEntity)null, d0, d1, d2, soundIn, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
     }
+}
 
     @Override
     public void openInventory(PlayerEntity player) {
@@ -131,7 +150,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
         return 0;
     }
     public static void swapContents(BananaChestTileEntity te, BananaChestTileEntity otherTe){
-        NonNullList<ItemSTack> list = te.getItems();
+        NonNullList<ItemStack> list = te.getItems();
         te.setItems(otherTe.getItems());
 //        otherTe
     }
@@ -145,16 +164,31 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
         }
     }
 
-    @Override
-    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nonnull Direction side) {
-        if(cap == getCapabilityItemHandler.ITEM_HANDLER_CAPABILTIY){
-            return itemhandler.cast();
-        }
-        return super.getCapability(cap, side);
+//    @Override
+//    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nonnull Direction side) {
+//        if(cap == getCapabilityItemHandler.ITEM_HANDLER_CAPABILTIY){
+//            return itemhandler.cast();
+//        }
+//        return super.getCapability(cap, side);
+//    }
+@Override
+public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, Direction side) {
+    if (!this.removed && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (this.itemhandler == null)
+            this.itemhandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
+        return this.itemhandler.cast();
     }
+    return super.getCapability(cap, side);
+}
 
-    private IItemHandlerModifiable createHandler(){
-        return new InvWrapper(this);
+
+    private IItemHandlerModifiable createHandler() {
+        BlockState state = this.getBlockState();
+        if (!(state.getBlock() instanceof ChestBlock)) {
+            return new net.minecraftforge.items.wrapper.InvWrapper(this);
+        }
+        IInventory inv = BananaChest.getChestInventory((ChestBlock) state.getBlock(), state, getWorld(), getPos(), true);
+        return new net.minecraftforge.items.wrapper.InvWrapper(inv == null ? this : inv);
     }
 
     @Override
