@@ -52,8 +52,8 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
 
     @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new BananaChestContainer(id,player,this);
-    }
+        return new BananaChestContainer(id,player,this,22);
+    }//was not 22 rows was null
 
     @Override
     protected NonNullList<ItemStack> getItems() {

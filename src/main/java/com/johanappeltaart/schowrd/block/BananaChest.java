@@ -7,10 +7,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.DoubleSidedInventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityMerger;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -38,11 +40,37 @@ public class BananaChest extends ChestBlock {
 		}
 		);
 	}
+	private static final TileEntityMerger.ICallback<ChestTileEntity, Optional<IInventory>> field_220109_i = new TileEntityMerger.ICallback<ChestTileEntity, Optional<IInventory>>() {
+		public Optional<IInventory> func_225539_a_(ChestTileEntity p_225539_1_, ChestTileEntity p_225539_2_) {
+			return Optional.of(new DoubleSidedInventory(p_225539_1_, p_225539_2_));
+		}
 
-//	@Nullable
+		public Optional<IInventory> func_225538_a_(ChestTileEntity p_225538_1_) {
+			return Optional.of(p_225538_1_);
+		}
+
+		public Optional<IInventory> func_225537_b_() {
+			return Optional.empty();
+		}
+	};
+
+//		@Override
+//		public Optional<IInventory> func_225538_a_(ChestTileEntity p_225538_1_) {
+//			return Optional.empty();
+//		}
+//
+//		@Override
+//		public Optional<IInventory> func_225537_b_() {
+//			return Optional.empty();
+//		}
+
+		@Nullable
 //	public static IInventory getChestInventory(ChestBlock chest, BlockState state, World world, BlockPos pos, boolean override) {
 //		return chest.combine(state, world, pos, override).<Optional<IInventory>>apply(INVENTORY_MERGER).orElse((IInventory)null);
 //	}
+	public static IInventory getChestInventory(ChestBlock p_226916_0_, BlockState p_226916_1_, World p_226916_2_, BlockPos p_226916_3_, boolean p_226916_4_) {
+		return p_226916_0_.func_225536_a_(p_226916_1_, p_226916_2_, p_226916_3_, p_226916_4_).<Optional<IInventory>>apply(field_220109_i).orElse((IInventory)null);
+	}
 
 	@Override
 	public boolean hasTileEntity(BlockState state){
