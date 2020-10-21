@@ -28,8 +28,6 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-import java.awt.*;
-
 public class BananaChestTileEntity extends LockableLootTileEntity {
 
     private NonNullList<ItemStack> chestContents = NonNullList.withSize(96, ItemStack.EMPTY);
@@ -47,7 +45,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
     }
 
     protected Container createMenu(int id, PlayerInventory player) {
-        return BananaChestContainer.createBananaChest(id,player,this);
+        return new BananaChestContainer(id,player,this);
     }//was not 22 rows was null
 
     @Override
@@ -111,10 +109,10 @@ private void playSound(SoundEvent soundIn) {
 
     @Override
     public void openInventory(PlayerEntity player) {
-        if(!player.isSpectator()){
+//        if(!player.isSpectator()){
             if(this.numPlayersUsing<0){
                 this.numPlayersUsing = 0;
-            }
+//            }
         }
         ++this.numPlayersUsing;
         this.onOpenOrClose();
@@ -122,10 +120,10 @@ private void playSound(SoundEvent soundIn) {
 
     @Override
     public void closeInventory(PlayerEntity player) {
-        if(!player.isSpectator()){
+//        if(!player.isSpectator()){
             --this.numPlayersUsing;
             this.onOpenOrClose();
-        }
+//        }
     }
     protected void onOpenOrClose(){
         Block block = this.getBlockState().getBlock();

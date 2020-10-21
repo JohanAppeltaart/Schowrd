@@ -22,7 +22,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
     public class ModContainerTypes{
     public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPE =  DeferredRegister.create(ForgeRegistries.CONTAINERS, Schowrd.MOD_ID);
 //    public static final RegistryObject<ContainerType<BananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()->BananaChestContainer::new);
-//    public static final RegistryObject<ContainerType<BananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()->IForgeContainerType.create(BananaChestContainer::new));
+    public static final RegistryObject<ContainerType<BananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()-> IForgeContainerType.create(BananaChestContainer::new));
 //    public static final RegistryObject<ContainerType>  BANANA_CHEST = register("banana_chest", BananaChestContainer::createBananaChest);IForgeContainerType.create(BananaChestContainer::new)
 
 
