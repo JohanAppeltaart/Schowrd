@@ -1,5 +1,6 @@
-{
+{"parent": "block/cube_all",
   "textures": {
-    "particle": "schowrd:blocks/banana_planks"
+    "particle": "schowrd:blocks/banana_planks",
+    "all": "schowrd:blocks/banana_planks"
   }
 }

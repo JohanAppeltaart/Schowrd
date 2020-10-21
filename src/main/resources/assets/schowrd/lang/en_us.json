@@ -22,5 +22,6 @@
     "block.schowrd.banana_leaves":"Banana Leaves",
     "block.schowrd.banana_log":"Banana Log",
     "block.schowrd.stripped_banana_log":"Stripped Banana Log",
+    "container.banana_chest": "Banana Chest",
     "itemGroup.schowrdTab":"Schowrd"
 }

@@ -27,6 +27,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class BananaChestTileEntity extends LockableLootTileEntity {
 
@@ -49,7 +50,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
     }//was not 22 rows was null
 
     @Override
-    protected NonNullList<ItemStack> getItems() {
+    public NonNullList<ItemStack> getItems() {
         return this.chestContents;
     }
 
@@ -74,7 +75,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
         if(!this.checkLootAndWrite(compound)){
             ItemStackHelper.saveAllItems(compound,this.chestContents);
         }
-        return null;//lol kan weghalen of toch niet
+        return compound;//lol kan weghalen of toch niet
     }
 
 //    @Override
@@ -176,12 +177,13 @@ public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(net.mine
 
 
     private IItemHandlerModifiable createHandler() {
-        BlockState state = this.getBlockState();
-        if (!(state.getBlock() instanceof ChestBlock)) {
-            return new net.minecraftforge.items.wrapper.InvWrapper(this);
-        }
-        IInventory inv = BananaChest.getChestInventory((ChestBlock) state.getBlock(), state, getWorld(), getPos(), true);
-        return new net.minecraftforge.items.wrapper.InvWrapper(inv == null ? this : inv);
+        return new InvWrapper(this);
+//        BlockState state = this.getBlockState();
+//        if (!(state.getBlock() instanceof ChestBlock)) {
+//            return new net.minecraftforge.items.wrapper.InvWrapper(this);
+//        }
+//        IInventory inv = BananaChest.getChestInventory((ChestBlock) state.getBlock(), state, getWorld(), getPos(), true);
+//        return new net.minecraftforge.items.wrapper.InvWrapper(inv == null ? this : inv);
     }
 
     @Override

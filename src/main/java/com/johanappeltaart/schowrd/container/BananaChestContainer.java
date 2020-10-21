@@ -3,9 +3,12 @@ package com.johanappeltaart.schowrd.container;
 import com.johanappeltaart.schowrd.init.ModBlocks;
 import com.johanappeltaart.schowrd.init.ModContainerTypes;
 import com.johanappeltaart.schowrd.tileentity.BananaChestTileEntity;
+import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
+import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -57,9 +60,8 @@ public final BananaChestTileEntity tileEntity;
 //        }
 //
 //    }
-public BananaChestContainer(final int windowId, final PlayerInventory playerInventory,
-                             final BananaChestTileEntity tileEntity) {
-    super(ModContainerTypes.BANANA_CHEST.get(), windowId);
+public BananaChestContainer(final int windowId, final PlayerInventory playerInventory, final BananaChestTileEntity tileEntity) {
+    super(ModContainerTypes.BANANA_CHEST.get(), windowId);//,new Inventory(9*22),22
     this.tileEntity = tileEntity;
     this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
 
