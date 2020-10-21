@@ -45,7 +45,7 @@ public class Schowrd
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModTileEntityTypes.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModContainerTypes.CONTAINER_TYPES.register((FMLJavaModLoadingContext.get().getModEventBus()));
+//        ModContainerTypes.CONTAINER_TYPES.register((FMLJavaModLoadingContext.get().getModEventBus()));
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

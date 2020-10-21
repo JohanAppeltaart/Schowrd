@@ -5,7 +5,6 @@ import com.johanappeltaart.schowrd.container.BananaChestContainer;
 import com.johanappeltaart.schowrd.init.ModTileEntityTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,7 +14,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.ChestType;
-import net.minecraft.tileentity.ChestTileEntity;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -27,12 +25,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.items.wrapper.InvWrapper;
 
-import javax.annotation.Nonnull;
+import java.awt.*;
 
 public class BananaChestTileEntity extends LockableLootTileEntity {
 
@@ -50,9 +46,8 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
         return new TranslationTextComponent("container.banana_chest");
     }
 
-    @Override
     protected Container createMenu(int id, PlayerInventory player) {
-        return new BananaChestContainer(id,player,this,22);
+        return BananaChestContainer.createBananaChest(id,player,this);
     }//was not 22 rows was null
 
     @Override
