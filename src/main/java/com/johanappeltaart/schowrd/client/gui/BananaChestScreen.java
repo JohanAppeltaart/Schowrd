@@ -39,8 +39,8 @@ public class BananaChestScreen extends ContainerScreen<BananaChestContainer> {
 //    protected void func_230450_a_(MatrixStack p_230450_1_, float p_230450_2_, int p_230450_3_, int p_230450_4_) {
 //    }
     /** The ResourceLocation containing the chest GUI texture. */
-//    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Schowrd.MOD_ID, "textures/gui/banana_chest.png");
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Schowrd.MOD_ID, "textures/gui/banana_chest.png");
+//    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
     /** Window height is calculated with these values; the more rows, the higher */
     private final int inventoryRows;
 
@@ -50,7 +50,7 @@ public class BananaChestScreen extends ContainerScreen<BananaChestContainer> {
         int i = 222;
         int j = 114;
         this.inventoryRows = p_i51095_1_.getNumRows();
-        this.ySize = 183;//114+ this.inventoryRows * 18;
+        this.ySize = 185;//114+ this.inventoryRows * 18;
         this.field_238745_s_ = this.ySize - 94;
     }
 
@@ -67,7 +67,7 @@ public class BananaChestScreen extends ContainerScreen<BananaChestContainer> {
         int i = (this.field_230708_k_ - this.xSize) / 2;
         int j = (this.field_230709_l_ - this.ySize) / 2;
 //        this.func_238474_b_(p_230450_1_,i,j,0,0,this.xSize,this.ySize);
-        this.func_238474_b_(p_230450_1_, i, j, 0, 0, this.xSize, this.inventoryRows * 18 + 17);
+        this.func_238474_b_(p_230450_1_, i, j, 0, 0, this.xSize, this.inventoryRows * 18 + 17);//17
         this.func_238474_b_(p_230450_1_, i, j + this.inventoryRows * 18 + 17, 0, 126, this.xSize, 96);
     }
 

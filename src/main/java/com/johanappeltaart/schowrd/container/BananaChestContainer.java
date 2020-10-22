@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class BananaChestContainer extends Container {
 //    private final IInventory lowerChestInventory;
-    private final int numRows = 6;//36;//was 22
+    private final int numRows = 6;//36;//was 22// 108 slots
 public final BananaChestTileEntity tileEntity;
     private final IWorldPosCallable canInteractWithCallable;
 

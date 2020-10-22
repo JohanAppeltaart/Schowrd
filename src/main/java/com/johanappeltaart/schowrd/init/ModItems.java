@@ -1,10 +1,12 @@
 package com.johanappeltaart.schowrd.init;
 
+import com.johanappeltaart.schowrd.armor.ModArmorMaterial;
 import com.johanappeltaart.schowrd.block.BlockItemBase;
 import com.johanappeltaart.schowrd.Schowrd;
 import com.johanappeltaart.schowrd.items.*;
 import com.johanappeltaart.schowrd.tools.ModItemTier;
 import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -39,6 +41,16 @@ public class ModItems {
 
     public static final RegistryObject<HoeItem> BANANA_HOE = ITEMS.register("banana_hoe",
             ()-> new HoeItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+
+    //Armor Items
+    public static final RegistryObject<ArmorItem> BANANA_HELMET = ITEMS.register("banana_helmet",()->
+       new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.HEAD,new Item.Properties().group(Schowrd.TAB)));
+    public static final RegistryObject<ArmorItem> BANANA_CHESTPLATE = ITEMS.register("banana_chestplate",()->
+        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.CHEST,new Item.Properties().group(Schowrd.TAB)));
+    public static final RegistryObject<ArmorItem> BANANA_LEGGINGS = ITEMS.register("banana_leggings",()->
+        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.LEGS,new Item.Properties().group(Schowrd.TAB)));
+    public static final RegistryObject<ArmorItem> BANANA_BOOTS = ITEMS.register("banana_boots",()->
+        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.FEET,new Item.Properties().group(Schowrd.TAB)));
 
     //boat
     public static final RegistryObject<BoatItem> BANANA_BOAT = ITEMS.register("banana_boat",
