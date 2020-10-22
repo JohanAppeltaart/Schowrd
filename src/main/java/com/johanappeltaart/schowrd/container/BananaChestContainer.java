@@ -22,44 +22,10 @@ import java.util.Objects;
 
 public class BananaChestContainer extends Container {
 //    private final IInventory lowerChestInventory;
-    private final int numRows = 22;
+    private final int numRows = 6;//36;//was 22
 public final BananaChestTileEntity tileEntity;
     private final IWorldPosCallable canInteractWithCallable;
 
-
-//    private BananaChestContainer(ContainerType<?> type, int id, PlayerInventory player, int rows) {
-//        this(type, id, player, new Inventory(9 * rows), rows);
-//    }
-//
-//    public static BananaChestContainer createBananaChest(int id, PlayerInventory player, IInventory blockEntity) {
-//        return new BananaChestContainer(ContainerType.GENERIC_9X6, id, player, 6);
-//    }
-//ContainerType type,
-//    public BananaChestContainer(final int id, final PlayerInventory playerInventoryIn, IInventory p_i50092_4_, int rows) {
-//        super(ModContainerTypes.BANANA_CHEST.get(),id);
-//        assertInventorySize(p_i50092_4_, rows * 9);
-//        this.lowerChestInventory = p_i50092_4_;
-//        this.numRows = rows;
-//        p_i50092_4_.openInventory(playerInventoryIn.player);
-//        int i = (this.numRows - 4) * 18;
-//
-//        for(int j = 0; j < this.numRows; ++j) {
-//            for(int k = 0; k < 9; ++k) {
-//                this.addSlot(new Slot(p_i50092_4_, k + j * 9, 8 + k * 18, 18 + j * 18));
-//            }
-//        }
-//
-//        for(int l = 0; l < 3; ++l) {
-//            for(int j1 = 0; j1 < 9; ++j1) {
-//                this.addSlot(new Slot(playerInventoryIn, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
-//            }
-//        }
-//
-//        for(int i1 = 0; i1 < 9; ++i1) {
-//            this.addSlot(new Slot(playerInventoryIn, i1, 8 + i1 * 18, 161 + i));
-//        }
-//
-//    }
 public BananaChestContainer(final int windowId, final PlayerInventory playerInventory, final BananaChestTileEntity tileEntity) {
     super(ModContainerTypes.BANANA_CHEST.get(), windowId);//,new Inventory(9*22),22
     this.tileEntity = tileEntity;
@@ -167,4 +133,39 @@ public BananaChestContainer(final int windowId, final PlayerInventory playerInve
     public int getNumRows() {
         return this.numRows;
     }
+
+
+//    private BananaChestContainer(ContainerType<?> type, int id, PlayerInventory player, int rows) {
+//        this(type, id, player, new Inventory(9 * rows), rows);
+//    }
+//
+//    public static BananaChestContainer createBananaChest(int id, PlayerInventory player, IInventory blockEntity) {
+//        return new BananaChestContainer(ContainerType.GENERIC_9X6, id, player, 6);
+//    }
+//ContainerType type,
+//    public BananaChestContainer(final int id, final PlayerInventory playerInventoryIn, IInventory p_i50092_4_, int rows) {
+//        super(ModContainerTypes.BANANA_CHEST.get(),id);
+//        assertInventorySize(p_i50092_4_, rows * 9);
+//        this.lowerChestInventory = p_i50092_4_;
+//        this.numRows = rows;
+//        p_i50092_4_.openInventory(playerInventoryIn.player);
+//        int i = (this.numRows - 4) * 18;
+//
+//        for(int j = 0; j < this.numRows; ++j) {
+//            for(int k = 0; k < 9; ++k) {
+//                this.addSlot(new Slot(p_i50092_4_, k + j * 9, 8 + k * 18, 18 + j * 18));
+//            }
+//        }
+//
+//        for(int l = 0; l < 3; ++l) {
+//            for(int j1 = 0; j1 < 9; ++j1) {
+//                this.addSlot(new Slot(playerInventoryIn, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
+//            }
+//        }
+//
+//        for(int i1 = 0; i1 < 9; ++i1) {
+//            this.addSlot(new Slot(playerInventoryIn, i1, 8 + i1 * 18, 161 + i));
+//        }
+//
+//    }
 }

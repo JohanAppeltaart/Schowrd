@@ -42,6 +42,10 @@ public class BananaChest extends Block {
 		);
 //		super(properties);
 	}
+
+//    public static IInventory getChestInventory(ChestBlock block, BlockState state, World world, BlockPos pos, boolean b) {
+//		return chest.combine(state, world, pos, override).<Optional<IInventory>>apply(INVENTORY_MERGER).orElse((IInventory)null);
+//    }
 //	private static final TileEntityMerger.ICallback<ChestTileEntity, Optional<IInventory>> field_220109_i = new TileEntityMerger.ICallback<ChestTileEntity, Optional<IInventory>>() {
 //		public Optional<IInventory> func_225539_a_(ChestTileEntity p_225539_1_, ChestTileEntity p_225539_2_) {
 //			return Optional.of(new DoubleSidedInventory(p_225539_1_, p_225539_2_));
@@ -66,7 +70,7 @@ public class BananaChest extends Block {
 //			return Optional.empty();
 //		}
 
-		@Nullable
+//		@Nullable
 //	public static IInventory getChestInventory(ChestBlock chest, BlockState state, World world, BlockPos pos, boolean override) {
 //		return chest.combine(state, world, pos, override).<Optional<IInventory>>apply(INVENTORY_MERGER).orElse((IInventory)null);
 //	}
