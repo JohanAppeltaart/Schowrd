@@ -43,7 +43,7 @@ public class ModItems {
             ()-> new HoeItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
 
     //Armor Items
-    public static final RegistryObject<ArmorItem> BANANA_HELMET = ITEMS.register("banana_helmet",()-> 
+    public static final RegistryObject<ArmorItem> BANANA_HELMET = ITEMS.register("banana_helmet",()->
        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.HEAD,new Item.Properties().group(Schowrd.TAB)));
     public static final RegistryObject<ArmorItem> BANANA_CHESTPLATE = ITEMS.register("banana_chestplate",()->
         new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.CHEST,new Item.Properties().group(Schowrd.TAB)));

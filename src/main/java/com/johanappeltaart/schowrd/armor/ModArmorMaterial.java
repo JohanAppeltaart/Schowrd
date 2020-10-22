@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterial implements IArmorMaterial {
 
-    BANANA(Schowrd.MOD_ID + "banana", 10, new int[]{6, 12, 16, 6}, 10, SoundEvents.BLOCK_BELL_USE, 6.0F, 0.5F
+    BANANA(Schowrd.MOD_ID + ":banana", 10, new int[]{6, 12, 16, 6}, 10, SoundEvents.BLOCK_BELL_USE, 6.0F, 0.5F
             , () -> {return Ingredient.fromItems(ModItems.BANANA_IRON.get());
     });
 
