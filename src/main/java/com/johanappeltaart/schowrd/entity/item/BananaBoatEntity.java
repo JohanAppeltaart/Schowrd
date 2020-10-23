@@ -16,8 +16,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.Pose;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -94,15 +92,18 @@ public class BananaBoatEntity extends Entity {
       this.preventEntitySpawning = true;
    }
 //
-//   public BananaBoatEntity(World worldIn, double x, double y, double z) {
-//      this(ModEntityTypes.BANANA_BOAT.get(), worldIn);
-////      this(EntityType.BOAT, worldIn);
-//      this.setPosition(x, y, z);
-//      this.setMotion(Vector3d.ZERO);
-//      this.prevPosX = x;
-//      this.prevPosY = y;
-//      this.prevPosZ = z;
-//   }
+public static class BananaBoatEntity2 extends BananaBoatEntity {
+   public BananaBoatEntity2(World worldIn, double x, double y, double z) {
+//      super();
+      super(ModEntityTypes.BANANA_BOAT.get(), worldIn);
+//      this(EntityType.BOAT, worldIn);
+      this.setPosition(x, y, z);
+      this.setMotion(Vector3d.ZERO);
+      this.prevPosX = x;
+      this.prevPosY = y;
+      this.prevPosZ = z;
+   }
+}
 
    protected float getEyeHeight(Pose poseIn, EntitySize sizeIn) {
       return sizeIn.height;
@@ -886,4 +887,6 @@ public class BananaBoatEntity extends Entity {
          return aboatentity$type[0];
       }
    }
+
+
 }
