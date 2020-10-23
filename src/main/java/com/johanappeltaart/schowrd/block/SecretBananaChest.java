@@ -27,10 +27,10 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.Properties;
 
-public class BananaChest extends Block {
+public class SecretBananaChest extends Block {
 
 
-	public BananaChest() {
+	public SecretBananaChest() {
 		super(AbstractBlock.Properties.create(Material.WOOD, MaterialColor.DIAMOND)
 				.hardnessAndResistance(2.5f)
 				.slipperiness(1.5f)
@@ -127,7 +127,7 @@ public class BananaChest extends Block {
 
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return ModTileEntityTypes.BANANA_CHEST.get().create();
+		return ModTileEntityTypes.SECRET_BANANA_CHEST.get().create();
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package com.johanappeltaart.schowrd.client.gui;
 
 import com.johanappeltaart.schowrd.Schowrd;
-import com.johanappeltaart.schowrd.container.BananaChestContainer;
+import com.johanappeltaart.schowrd.container.SecretBananaChestContainer;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.IGuiEventListener;
@@ -23,7 +23,7 @@ import java.util.Optional;
 //    }
 //}
 @OnlyIn(Dist.CLIENT)
-public class BananaChestScreen extends ContainerScreen<BananaChestContainer> {
+public class SecretBananaChestScreen extends ContainerScreen<SecretBananaChestContainer> {
 
 //    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(Schowrd.MOD_ID, "textures/gui/banana_chest.png");
 //
@@ -44,7 +44,7 @@ public class BananaChestScreen extends ContainerScreen<BananaChestContainer> {
     /** Window height is calculated with these values; the more rows, the higher */
     private final int inventoryRows;
 
-    public BananaChestScreen(BananaChestContainer p_i51095_1_, PlayerInventory p_i51095_2_, ITextComponent p_i51095_3_) {
+    public SecretBananaChestScreen(SecretBananaChestContainer p_i51095_1_, PlayerInventory p_i51095_2_, ITextComponent p_i51095_3_) {
         super(p_i51095_1_, p_i51095_2_, p_i51095_3_);
         this.field_230711_n_ = false;
         int i = 222;

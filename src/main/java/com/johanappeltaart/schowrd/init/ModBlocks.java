@@ -25,7 +25,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> BANANA_CAKE = BLOCKS.register("banana_cake", BananaCake::new);
 
     //Chest
-    public static final RegistryObject<Block> BANANA_CHEST = BLOCKS.register("banana_chest", BananaChest::new);
+    public static final RegistryObject<Block> SECRET_BANANA_CHEST = BLOCKS.register("secret_banana_chest", SecretBananaChest::new);
 
     //Tree Stuff
     public static final RegistryObject<Block> BANANA_PLANKS = BLOCKS.register("banana_planks", BananaPlanks::new);

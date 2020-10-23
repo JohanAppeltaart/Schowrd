@@ -1,11 +1,10 @@
 package com.johanappeltaart.schowrd.tileentity;
 
-import com.johanappeltaart.schowrd.block.BananaChest;
-import com.johanappeltaart.schowrd.container.BananaChestContainer;
+import com.johanappeltaart.schowrd.block.SecretBananaChest;
+import com.johanappeltaart.schowrd.container.SecretBananaChestContainer;
 import com.johanappeltaart.schowrd.init.ModTileEntityTypes;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.DoubleSidedInventory;
@@ -15,7 +14,6 @@ import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.properties.ChestType;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -59,7 +57,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
     }
 
     protected Container createMenu(int id, PlayerInventory player) {
-        return new BananaChestContainer(id,player,this);
+        return new SecretBananaChestContainer(id,player,this);
     }//was not 22 rows was null
 
     @Override
@@ -73,7 +71,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
     }
 
     public BananaChestTileEntity(){
-        this(ModTileEntityTypes.BANANA_CHEST.get());
+        this(ModTileEntityTypes.SECRET_BANANA_CHEST.get());
     }
 
 
@@ -210,7 +208,7 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
     protected void onOpenOrClose(){
 //        playSound(SoundEvent.field_232678_a_);
         Block block = this.getBlockState().getBlock();
-        if(block instanceof BananaChest){
+        if(block instanceof SecretBananaChest){
             this.world.addBlockEvent(this.pos,block,1,this.numPlayersUsing);
             this.world.notifyNeighborsOfStateChange(this.pos,block);
         }

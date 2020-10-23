@@ -67,8 +67,8 @@ public class ModItems {
             () -> new BlockItemBase(ModBlocks.BANANA_BLOCK.get()));
     public static final RegistryObject<Item>BANANA_IRON_BLOCK_ITEM = ITEMS.register("banana_iron_block",
             () -> new BlockItemBase(ModBlocks.BANANA_IRON_BLOCK.get()));
-    public static final RegistryObject<Item>BANANA_CHEST_ITEM = ITEMS.register("banana_chest",
-            () -> new BlockItemBase(ModBlocks.BANANA_CHEST.get()));
+    public static final RegistryObject<Item>SECRET_BANANA_CHEST_ITEM = ITEMS.register("secret_banana_chest",
+            () -> new BlockItemBase(ModBlocks.SECRET_BANANA_CHEST.get()));
 
     //tree block items
     public static final RegistryObject<Item>BANANA_PLANKS_ITEM = ITEMS.register("banana_planks",

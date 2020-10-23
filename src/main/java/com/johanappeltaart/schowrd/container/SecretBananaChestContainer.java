@@ -3,12 +3,9 @@ package com.johanappeltaart.schowrd.container;
 import com.johanappeltaart.schowrd.init.ModBlocks;
 import com.johanappeltaart.schowrd.init.ModContainerTypes;
 import com.johanappeltaart.schowrd.tileentity.BananaChestTileEntity;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -20,13 +17,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Objects;
 
-public class BananaChestContainer extends Container {
+public class SecretBananaChestContainer extends Container {
 //    private final IInventory lowerChestInventory;
     private final int numRows = 6;//36;//was 22// 108 slots
 public final BananaChestTileEntity tileEntity;
     private final IWorldPosCallable canInteractWithCallable;
 
-public BananaChestContainer(final int windowId, final PlayerInventory playerInventory, final BananaChestTileEntity tileEntity) {
+public SecretBananaChestContainer(final int windowId, final PlayerInventory playerInventory, final BananaChestTileEntity tileEntity) {
     super(ModContainerTypes.BANANA_CHEST.get(), windowId);//,new Inventory(9*22),22
     this.tileEntity = tileEntity;
     this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
@@ -71,7 +68,7 @@ public BananaChestContainer(final int windowId, final PlayerInventory playerInve
 //    public BananaChestContainer(final int windowId,final PlayerInventory playerInventory,final PacketBuffer data){
 //        this(windowId,playerInventory,getTileEntity(playerInventory,data));
 //    }
-    public BananaChestContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data) {
+    public SecretBananaChestContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data) {
         this(windowId, playerInventory,getTileEntity(playerInventory,data));
     }
 
@@ -81,7 +78,7 @@ public BananaChestContainer(final int windowId, final PlayerInventory playerInve
      */
     public boolean canInteractWith(PlayerEntity playerIn) {
 //        return this.lowerChestInventory.isUsableByPlayer(playerIn);
-        return isWithinUsableDistance(canInteractWithCallable,playerIn, ModBlocks.BANANA_CHEST.get());
+        return isWithinUsableDistance(canInteractWithCallable,playerIn, ModBlocks.SECRET_BANANA_CHEST.get());
     }
 
     /**
