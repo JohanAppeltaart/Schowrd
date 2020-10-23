@@ -5,7 +5,8 @@ import com.johanappeltaart.schowrd.block.BlockItemBase;
 import com.johanappeltaart.schowrd.Schowrd;
 import com.johanappeltaart.schowrd.items.*;
 import com.johanappeltaart.schowrd.tools.ModItemTier;
-import net.minecraft.entity.item.BoatEntity;
+//import net.minecraft.entity.item.BoatEntity;
+import com.johanappeltaart.schowrd.entity.item.BananaBoatEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -53,8 +54,8 @@ public class ModItems {
         new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.FEET,new Item.Properties().group(Schowrd.TAB)));
 
     //boat
-    public static final RegistryObject<BoatItem> BANANA_BOAT = ITEMS.register("banana_boat",
-            ()->new BoatItem(BoatEntity.Type.JUNGLE, new Item.Properties().group(Schowrd.TAB).maxStackSize(1)));//ItemGroup.TRANSPORTATION
+    public static final RegistryObject<BananaBoatItem> BANANA_BOAT = ITEMS.register("banana_boat",
+            ()->new BananaBoatItem(BananaBoatEntity.Type.BANANA, new Item.Properties().group(Schowrd.TAB).maxStackSize(1)));//ItemGroup.TRANSPORTATION
 
     //cake item
     public static final RegistryObject<Item>BANANA_CAKE_ITEM = ITEMS.register("banana_cake",
