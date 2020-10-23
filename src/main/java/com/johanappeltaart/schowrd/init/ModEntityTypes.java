@@ -16,7 +16,9 @@ public class ModEntityTypes {
 
     //Boat Entity
     public static RegistryObject<EntityType<BananaBoatEntity>> BANANA_BOAT = ENTITY_TYPES.register("banana_boat",
-            ()->EntityType.Builder.create(BananaBoatEntity::new, EntityClassification.AMBIENT)
+            ()->EntityType.Builder.<BananaBoatEntity>create(BananaBoatEntity::new, EntityClassification.AMBIENT)
+                    .size(1.375F, 0.5625F)
+                    .func_233606_a_(10)
                     .build(new ResourceLocation(Schowrd.MOD_ID, "banana_boat").toString()));
 
 }

@@ -1,9 +1,6 @@
 package com.johanappeltaart.schowrd;
 
-import com.johanappeltaart.schowrd.init.ModBlocks;
-import com.johanappeltaart.schowrd.init.ModContainerTypes;
-import com.johanappeltaart.schowrd.init.ModItems;
-import com.johanappeltaart.schowrd.init.ModTileEntityTypes;
+import com.johanappeltaart.schowrd.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
@@ -46,6 +43,7 @@ public class Schowrd
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModTileEntityTypes.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModContainerTypes.CONTAINER_TYPE.register((FMLJavaModLoadingContext.get().getModEventBus()));
+        ModEntityTypes.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

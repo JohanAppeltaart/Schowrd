@@ -53,7 +53,7 @@ public class BananaBoatItem extends Item {
          }
 
          if (raytraceresult.getType() == RayTraceResult.Type.BLOCK) {
-            BananaBoatEntity boatentity = new BananaBoatEntity.BananaBoatEntity2(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
+            BananaBoatEntity boatentity = new BananaBoatEntity(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
             boatentity.setBoatType(this.type);
             boatentity.rotationYaw = playerIn.rotationYaw;
             if (!worldIn.hasNoCollisions(boatentity, boatentity.getBoundingBox().grow(-0.1D))) {

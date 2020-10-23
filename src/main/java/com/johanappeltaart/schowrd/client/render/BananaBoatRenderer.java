@@ -17,7 +17,6 @@ import net.minecraft.util.math.vector.Quaternion;
 import net.minecraft.util.math.vector.Vector3f;
 
 public class BananaBoatRenderer extends EntityRenderer<BananaBoatEntity> {
-    private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[]{new ResourceLocation("textures/entity/boat/oak.png"), new ResourceLocation("textures/entity/boat/spruce.png"), new ResourceLocation("textures/entity/boat/birch.png"), new ResourceLocation("textures/entity/boat/jungle.png"), new ResourceLocation("textures/entity/boat/acacia.png"), new ResourceLocation("textures/entity/boat/dark_oak.png"), new ResourceLocation("textures/entity/boat/dark_oak.png")};
     protected final BananaBoatModel modelBoat = new BananaBoatModel();
 
     public BananaBoatRenderer(EntityRendererManager renderManagerIn) {

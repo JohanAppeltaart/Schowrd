@@ -16,6 +16,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.Pose;
+import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -85,25 +86,19 @@ public class BananaBoatEntity extends Entity {
    private float rockingAngle;
    private float prevRockingAngle;
 
-   public BananaBoatEntity(EntityType<? extends BananaBoatEntity> boat, World worldIn) {
-//      public BananaBoatEntity(EntityType<Entity> boat, World p_i50129_2_){
-//	    public BoatEntity(EntityType<? extends BoatEntity> p_i50129_1_, World p_i50129_2_) {
-      super(boat, worldIn);
+   public BananaBoatEntity(EntityType<?extends BananaBoatEntity> p_i50129_1_, World p_i50129_2_) {
+      super(p_i50129_1_, p_i50129_2_);
       this.preventEntitySpawning = true;
    }
-//
-public static class BananaBoatEntity2 extends BananaBoatEntity {
-   public BananaBoatEntity2(World worldIn, double x, double y, double z) {
-//      super();
-      super(ModEntityTypes.BANANA_BOAT.get(), worldIn);
-//      this(EntityType.BOAT, worldIn);
+
+   public BananaBoatEntity(World worldIn, double x, double y, double z) {
+      this(ModEntityTypes.BANANA_BOAT.get(), worldIn);
       this.setPosition(x, y, z);
       this.setMotion(Vector3d.ZERO);
       this.prevPosX = x;
       this.prevPosY = y;
       this.prevPosZ = z;
    }
-}
 
    protected float getEyeHeight(Pose poseIn, EntitySize sizeIn) {
       return sizeIn.height;
