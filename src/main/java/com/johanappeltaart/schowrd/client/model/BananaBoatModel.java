@@ -28,7 +28,7 @@
 //            int i = 32;
 //            int j = 6;
 //            int k = 20;
-//            int l = 4;
+//            int l = 4; 
 //            int i1 = 28;
 //            amodelrenderer[0].addBox(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F, 0.0F);
 //            amodelrenderer[0].setRotationPoint(0.0F, 3.0F, 1.0F);
