@@ -10,13 +10,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LilyPadBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MoverType;
-import net.minecraft.entity.Pose;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -86,20 +84,26 @@ public class BananaBoatEntity extends Entity {
    private float rockingAngle;
    private float prevRockingAngle;
 
-   public BananaBoatEntity(EntityType<?extends BananaBoatEntity> p_i50129_1_, World p_i50129_2_) {
+//   public BananaBoatEntity(EntityType<?extends BananaBoatEntity> p_i50129_1_, World p_i50129_2_) {
+         public BananaBoatEntity(EntityType<?extends BoatEntity> p_i50129_1_, World p_i50129_2_) {
       super(p_i50129_1_, p_i50129_2_);
       this.preventEntitySpawning = true;
    }
 
    public BananaBoatEntity(World worldIn, double x, double y, double z) {
-      this(ModEntityTypes.BANANA_BOAT.get(), worldIn);
+//      this(ModEntityTypes.BANANA_BOAT.get(), worldIn);
+      this(EntityType.BOAT, worldIn);
       this.setPosition(x, y, z);
       this.setMotion(Vector3d.ZERO);
       this.prevPosX = x;
       this.prevPosY = y;
       this.prevPosZ = z;
    }
-
+//   public static AttributeModifierMap setCustomAttributes() {//.MutableAttribute
+//      return BoatEntity.getRenderDistanceWeight();
+////              .createMutableAttribute(Attributes.MAX_HEALTH, 10.0D)
+////              .createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.25D);
+//   }
    protected float getEyeHeight(Pose poseIn, EntitySize sizeIn) {
       return sizeIn.height;
    }

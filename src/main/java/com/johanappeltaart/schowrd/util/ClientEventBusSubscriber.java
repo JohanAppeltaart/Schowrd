@@ -2,7 +2,7 @@ package com.johanappeltaart.schowrd.util;
 
 import com.johanappeltaart.schowrd.Schowrd;
 import com.johanappeltaart.schowrd.client.gui.SecretBananaChestScreen;
-import com.johanappeltaart.schowrd.client.render.BananaBoatRenderer;
+//import com.johanappeltaart.schowrd.client.render.BananaBoatRenderer;
 import com.johanappeltaart.schowrd.init.ModContainerTypes;
 import com.johanappeltaart.schowrd.init.ModEntityTypes;
 import net.minecraft.client.gui.ScreenManager;
@@ -18,7 +18,8 @@ public class ClientEventBusSubscriber {
     public static void clientSetup(FMLClientSetupEvent event) {
         ScreenManager.registerFactory(ModContainerTypes.BANANA_CHEST.get(), SecretBananaChestScreen::new);
 
-        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BANANA_BOAT.get(), BananaBoatRenderer::new);
+
+//        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BANANA_BOAT.get(), BananaBoatRenderer::new);
     }
 
 }

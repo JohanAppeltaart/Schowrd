@@ -1,13 +1,18 @@
 package com.johanappeltaart.schowrd;
 
+import com.johanappeltaart.schowrd.entity.item.BananaBoatEntity;
 import com.johanappeltaart.schowrd.init.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Direction;
+import net.minecraft.util.TeleportationRepositioner;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -51,6 +56,12 @@ public class Schowrd
 
     private void setup(final FMLCommonSetupEvent event)
     {
+//        DeferredWorkQueue.runLater(()->{
+//            //GlobalEntityTypeAttributes.put(ModEntityTypes.BANANA_BOAT.get(),
+////            GlobalEntityTypeAttributes.put(ModEntityTypes.BANANA_BOAT.get(),BananaBoatEntity.getRenderDistanceWeight());
+//            GlobalEntityTypeAttributes.func_233837_b_(ModEntityTypes.BANANA_BOAT.get());
+//        });
+
         // some preinit code
         LOGGER.info("HELLO FROM BANANAS");
         LOGGER.info("BANANA BLOCK =! >> {}", Blocks.BONE_BLOCK.getRegistryName());
