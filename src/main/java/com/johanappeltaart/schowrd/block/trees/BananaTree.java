@@ -16,6 +16,6 @@ public class BananaTree extends BigTree {
     }
     @Nullable
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> createLargeTreeFeature(Random p_225547_1_) {
-        return ModFeatures.BIG_BANANA_TREE;
+        return ModFeatures.MEGA_BANANA_TREE;
     }
 }
