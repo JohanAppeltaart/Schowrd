@@ -9,13 +9,13 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class BananaTree extends Tree {
+public class BananaTree extends BigTree {
     @Nullable
     protected ConfiguredFeature<BaseTreeFeatureConfig,?> createTreeFeature(Random p_225546_1_, boolean p_225546_2_) {
-        return null;
+        return ModFeatures.BANANA_TREE;
     }
-//    @Nullable
-//    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> createLargeTreeFeature(Random p_225547_1_) {
-//        return ModFeatures.BANANA;
-//    }
+    @Nullable
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> createLargeTreeFeature(Random p_225547_1_) {
+        return ModFeatures.BIG_BANANA_TREE;
+    }
 }
