@@ -80,8 +80,9 @@ public class BananaChestTileEntity extends LockableLootTileEntity {
         return 36;
     }//wad 96
 
-    public void func_230337_a_(BlockState p_230337_1_, CompoundNBT p_230337_2_) {
-        super.func_230337_a_(p_230337_1_, p_230337_2_);
+    public void fromTag(BlockState p_230337_1_, CompoundNBT p_230337_2_) {
+        super.fromTag(p_230337_1_,p_230337_2_);
+//        super.func_230337_a_(p_230337_1_, p_230337_2_);
         this.chestContents = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         if (!this.checkLootAndRead(p_230337_2_)) {
             ItemStackHelper.loadAllItems(p_230337_2_, this.chestContents);

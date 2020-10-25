@@ -1,7 +1,7 @@
 package com.johanappeltaart.schowrd.init;
 
 import com.johanappeltaart.schowrd.Schowrd;
-import com.johanappeltaart.schowrd.entity.item.BananaBoatEntity;
+//import com.johanappeltaart.schowrd.entity.item.BananaBoatEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;

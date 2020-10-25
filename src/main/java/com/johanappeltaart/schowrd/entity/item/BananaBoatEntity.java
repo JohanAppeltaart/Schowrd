@@ -4,17 +4,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.johanappeltaart.schowrd.init.ModBlocks;
-import com.johanappeltaart.schowrd.init.ModEntityTypes;
 import com.johanappeltaart.schowrd.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LilyPadBlock;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.item.BoatEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -85,7 +80,7 @@ public class BananaBoatEntity extends Entity {
    private float prevRockingAngle;
 
 //   public BananaBoatEntity(EntityType<?extends BananaBoatEntity> p_i50129_1_, World p_i50129_2_) {
-         public BananaBoatEntity(EntityType<?extends BoatEntity> p_i50129_1_, World p_i50129_2_) {
+         public BananaBoatEntity(EntityType<?extends net.minecraft.entity.item.BoatEntity> p_i50129_1_, World p_i50129_2_) {
       super(p_i50129_1_, p_i50129_2_);
       this.preventEntitySpawning = true;
    }
@@ -127,10 +122,10 @@ public class BananaBoatEntity extends Entity {
    }
 
    public static boolean func_242378_a(Entity p_242378_0_, Entity p_242378_1_) {
-      return (p_242378_1_.func_241845_aY() || p_242378_1_.canBePushed()) && !p_242378_0_.isRidingSameEntity(p_242378_1_);
+      return (p_242378_1_.method_30948() || p_242378_1_.canBePushed()) && !p_242378_0_.isRidingSameEntity(p_242378_1_);
    }
 
-   public boolean func_241845_aY() {
+   public boolean method_30948() {
       return true;
    }
 
@@ -139,7 +134,7 @@ public class BananaBoatEntity extends Entity {
    }
 
    protected Vector3d func_241839_a(Direction.Axis p_241839_1_, TeleportationRepositioner.Result p_241839_2_) {
-      return LivingEntity.func_242288_h(super.func_241839_a(p_241839_1_, p_241839_2_));
+      return LivingEntity.method_31079(super.method_30633(p_241839_1_, p_241839_2_));
    }
 
    public double getMountedYOffset() {
@@ -178,9 +173,9 @@ public class BananaBoatEntity extends Entity {
          }
       }
 
-      this.world.addParticle(ParticleTypes.SPLASH, this.getPosX() + (double)this.rand.nextFloat(), this.getPosY() + 0.7D, this.getPosZ() + (double)this.rand.nextFloat(), 0.0D, 0.0D, 0.0D);
+      this.world.addParticle(ParticleTypes.SPLASH, this.getX() + (double)this.rand.nextFloat(), this.getY() + 0.7D, this.getZ() + (double)this.rand.nextFloat(), 0.0D, 0.0D, 0.0D);
       if (this.rand.nextInt(20) == 0) {
-         this.world.playSound(this.getPosX(), this.getPosY(), this.getPosZ(), this.getSplashSound(), this.getSoundCategory(), 1.0F, 0.8F + 0.4F * this.rand.nextFloat(), false);
+         this.world.playSound(this.getX(), this.getY(), this.getZ(), this.getSplashSound(), this.getSoundCategory(), 1.0F, 0.8F + 0.4F * this.rand.nextFloat(), false);
       }
 
    }
@@ -290,7 +285,7 @@ public class BananaBoatEntity extends Entity {
                   Vector3d vector3d = this.getLook(1.0F);
                   double d0 = i == 1 ? -vector3d.z : vector3d.z;
                   double d1 = i == 1 ? vector3d.x : -vector3d.x;
-                  this.world.playSound((PlayerEntity)null, this.getPosX() + d0, this.getPosY(), this.getPosZ() + d1, soundevent, this.getSoundCategory(), 1.0F, 0.8F + 0.4F * this.rand.nextFloat());
+                  this.world.playSound((PlayerEntity)null, this.getX() + d0, this.getY(), this.getZ() + d1, soundevent, this.getSoundCategory(), 1.0F, 0.8F + 0.4F * this.rand.nextFloat());
                }
             }
 
@@ -376,13 +371,13 @@ public class BananaBoatEntity extends Entity {
    private void tickLerp() {
       if (this.canPassengerSteer()) {
          this.lerpSteps = 0;
-         this.setPacketCoordinates(this.getPosX(), this.getPosY(), this.getPosZ());
+         this.setPacketCoordinates(this.getX(), this.getY(), this.getZ());
       }
 
       if (this.lerpSteps > 0) {
-         double d0 = this.getPosX() + (this.lerpX - this.getPosX()) / (double)this.lerpSteps;
-         double d1 = this.getPosY() + (this.lerpY - this.getPosY()) / (double)this.lerpSteps;
-         double d2 = this.getPosZ() + (this.lerpZ - this.getPosZ()) / (double)this.lerpSteps;
+         double d0 = this.getX() + (this.lerpX - this.getX()) / (double)this.lerpSteps;
+         double d1 = this.getY() + (this.lerpY - this.getY()) / (double)this.lerpSteps;
+         double d2 = this.getZ() + (this.lerpZ - this.getZ()) / (double)this.lerpSteps;
          double d3 = MathHelper.wrapDegrees(this.lerpYaw - (double)this.rotationYaw);
          this.rotationYaw = (float)((double)this.rotationYaw + d3 / (double)this.lerpSteps);
          this.rotationPitch = (float)((double)this.rotationPitch + (this.lerpPitch - (double)this.rotationPitch) / (double)this.lerpSteps);
@@ -392,16 +387,19 @@ public class BananaBoatEntity extends Entity {
       }
    }
 
-   public void setPaddleState(boolean left, boolean right) {
-      this.dataManager.set(field_199704_e, left);
-      this.dataManager.set(field_199705_f, right);
+   public void setPaddleState(boolean p_184445_1_, boolean p_184445_2_) {
+      this.dataManager.set(field_199704_e, p_184445_1_);
+      this.dataManager.set(field_199705_f, p_184445_2_);
    }
 
    @OnlyIn(Dist.CLIENT)
-   public float getRowingTime(int side, float limbSwing) {
-      return this.getPaddleState(side) ? (float)MathHelper.clampedLerp((double)this.paddlePositions[side] - (double)((float)Math.PI / 8F), (double)this.paddlePositions[side], (double)limbSwing) : 0.0F;
+   public float getRowingTime(int p_184448_1_, float p_184448_2_) {
+      return this.getPaddleState(p_184448_1_) ? (float)MathHelper.clampedLerp((double)this.paddlePositions[p_184448_1_] - (double)((float)Math.PI / 8F), (double)this.paddlePositions[p_184448_1_], (double)p_184448_2_) : 0.0F;
    }
 
+   /**
+    * Determines whether the boat is in water, gliding on land, or in air
+    */
    private BananaBoatEntity.Status getBoatStatus() {
       BananaBoatEntity.Status boatentity$status = this.getUnderwaterStatus();
       if (boatentity$status != null) {
@@ -456,6 +454,9 @@ public class BananaBoatEntity extends Entity {
       return (float)(l + 1);
    }
 
+   /**
+    * Decides how much the boat should be gliding on the land (based on any slippery blocks)
+    */
    public float getBoatGlide() {
       AxisAlignedBB axisalignedbb = this.getBoundingBox();
       AxisAlignedBB axisalignedbb1 = new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY - 0.001D, axisalignedbb.minZ, axisalignedbb.maxX, axisalignedbb.minY, axisalignedbb.maxZ);
@@ -479,7 +480,7 @@ public class BananaBoatEntity extends Entity {
                      blockpos$mutable.setPos(l1, k2, i2);
                      BlockState blockstate = this.world.getBlockState(blockpos$mutable);
                      if (!(blockstate.getBlock() instanceof LilyPadBlock) && VoxelShapes.compare(blockstate.getCollisionShape(this.world, blockpos$mutable).withOffset((double)l1, (double)k2, (double)i2), voxelshape, IBooleanFunction.AND)) {
-                        f += blockstate.getBlock().getSlipperiness();
+                        f += blockstate.getSlipperiness(this.world, blockpos$mutable, this);
                         ++k1;
                      }
                   }
@@ -520,6 +521,9 @@ public class BananaBoatEntity extends Entity {
       return flag;
    }
 
+   /**
+    * Decides whether the boat is currently underwater.
+    */
    @Nullable
    private BananaBoatEntity.Status getUnderwaterStatus() {
       AxisAlignedBB axisalignedbb = this.getBoundingBox();
@@ -552,20 +556,23 @@ public class BananaBoatEntity extends Entity {
       return flag ? BananaBoatEntity.Status.UNDER_WATER : null;
    }
 
+   /**
+    * Update the boat's speed, based on momentum.
+    */
    private void updateMotion() {
       double d0 = (double)-0.04F;
       double d1 = this.hasNoGravity() ? 0.0D : (double)-0.04F;
       double d2 = 0.0D;
       this.momentum = 0.05F;
       if (this.previousStatus == BananaBoatEntity.Status.IN_AIR && this.status != BananaBoatEntity.Status.IN_AIR && this.status != BananaBoatEntity.Status.ON_LAND) {
-         this.waterLevel = this.getPosYHeight(1.0D);
-         this.setPosition(this.getPosX(), (double)(this.getWaterLevelAbove() - this.getHeight()) + 0.101D, this.getPosZ());
+         this.waterLevel = this.getBodyY(1.0D);
+         this.setPosition(this.getX(), (double)(this.getWaterLevelAbove() - this.getHeight()) + 0.101D, this.getZ());
          this.setMotion(this.getMotion().mul(1.0D, 0.0D, 1.0D));
          this.lastYd = 0.0D;
          this.status = BananaBoatEntity.Status.IN_WATER;
       } else {
          if (this.status == BananaBoatEntity.Status.IN_WATER) {
-            d2 = (this.waterLevel - this.getPosY()) / (double)this.getHeight();
+            d2 = (this.waterLevel - this.getY()) / (double)this.getHeight();
             this.momentum = 0.9F;
          } else if (this.status == BananaBoatEntity.Status.UNDER_FLOWING_WATER) {
             d1 = -7.0E-4D;
@@ -622,55 +629,55 @@ public class BananaBoatEntity extends Entity {
       }
    }
 
-   public void updatePassenger(Entity passenger) {
-      if (this.isPassenger(passenger)) {
+   public void updatePassenger(Entity p_184232_1_) {
+      if (this.isPassenger(p_184232_1_)) {
          float f = 0.0F;
-         float f1 = (float)((this.removed ? (double)0.01F : this.getMountedYOffset()) + passenger.getYOffset());
+         float f1 = (float)((this.removed ? (double)0.01F : this.getMountedYOffset()) + p_184232_1_.getYOffset());
          if (this.getPassengers().size() > 1) {
-            int i = this.getPassengers().indexOf(passenger);
+            int i = this.getPassengers().indexOf(p_184232_1_);
             if (i == 0) {
                f = 0.2F;
             } else {
                f = -0.6F;
             }
 
-            if (passenger instanceof AnimalEntity) {
+            if (p_184232_1_ instanceof AnimalEntity) {
                f = (float)((double)f + 0.2D);
             }
          }
 
          Vector3d vector3d = (new Vector3d((double)f, 0.0D, 0.0D)).rotateYaw(-this.rotationYaw * ((float)Math.PI / 180F) - ((float)Math.PI / 2F));
-         passenger.setPosition(this.getPosX() + vector3d.x, this.getPosY() + (double)f1, this.getPosZ() + vector3d.z);
-         passenger.rotationYaw += this.deltaRotation;
-         passenger.setRotationYawHead(passenger.getRotationYawHead() + this.deltaRotation);
-         this.applyYawToEntity(passenger);
-         if (passenger instanceof AnimalEntity && this.getPassengers().size() > 1) {
-            int j = passenger.getEntityId() % 2 == 0 ? 90 : 270;
-            passenger.setRenderYawOffset(((AnimalEntity)passenger).renderYawOffset + (float)j);
-            passenger.setRotationYawHead(passenger.getRotationYawHead() + (float)j);
+         p_184232_1_.setPosition(this.getX() + vector3d.x, this.getY() + (double)f1, this.getZ() + vector3d.z);
+         p_184232_1_.rotationYaw += this.deltaRotation;
+         p_184232_1_.setRotationYawHead(p_184232_1_.getRotationYawHead() + this.deltaRotation);
+         this.applyYawToEntity(p_184232_1_);
+         if (p_184232_1_ instanceof AnimalEntity && this.getPassengers().size() > 1) {
+            int j = p_184232_1_.getEntityId() % 2 == 0 ? 90 : 270;
+            p_184232_1_.setRenderYawOffset(((AnimalEntity)p_184232_1_).renderYawOffset + (float)j);
+            p_184232_1_.setRotationYawHead(p_184232_1_.getRotationYawHead() + (float)j);
          }
 
       }
    }
 
-   public Vector3d func_230268_c_(LivingEntity p_230268_1_) {
-      Vector3d vector3d = func_233559_a_((double)(this.getWidth() * MathHelper.SQRT_2), (double)p_230268_1_.getWidth(), this.rotationYaw);
-      double d0 = this.getPosX() + vector3d.x;
-      double d1 = this.getPosZ() + vector3d.z;
+   public Vector3d updatePassengerForDismount(LivingEntity p_230268_1_) {
+      Vector3d vector3d = getPassengerDismountOffset((double)(this.getWidth() * MathHelper.SQRT_2), (double)p_230268_1_.getWidth(), this.rotationYaw);
+      double d0 = this.getX() + vector3d.x;
+      double d1 = this.getZ() + vector3d.z;
       BlockPos blockpos = new BlockPos(d0, this.getBoundingBox().maxY, d1);
       BlockPos blockpos1 = blockpos.down();
       if (!this.world.hasWater(blockpos1)) {
-         double d2 = (double)blockpos.getY() + this.world.func_242403_h(blockpos);
-         double d3 = (double)blockpos.getY() + this.world.func_242403_h(blockpos1);
+         double d2 = (double)blockpos.getY() + this.world.getDismountHeight(blockpos);
+         double d3 = (double)blockpos.getY() + this.world.getDismountHeight(blockpos1);
 
-         for(Pose pose : p_230268_1_.func_230297_ef_()) {
-            Vector3d vector3d1 = TransportationHelper.func_242381_a(this.world, d0, d2, d1, p_230268_1_, pose);
+         for(Pose pose : p_230268_1_.getPoses()) {
+            Vector3d vector3d1 = TransportationHelper.findDismountPos(this.world, d0, d2, d1, p_230268_1_, pose);
             if (vector3d1 != null) {
                p_230268_1_.setPose(pose);
                return vector3d1;
             }
 
-            Vector3d vector3d2 = TransportationHelper.func_242381_a(this.world, d0, d3, d1, p_230268_1_, pose);
+            Vector3d vector3d2 = TransportationHelper.findDismountPos(this.world, d0, d3, d1, p_230268_1_, pose);
             if (vector3d2 != null) {
                p_230268_1_.setPose(pose);
                return vector3d2;
@@ -678,40 +685,49 @@ public class BananaBoatEntity extends Entity {
          }
       }
 
-      return super.func_230268_c_(p_230268_1_);
+      return super.updatePassengerForDismount(p_230268_1_);
    }
 
-   protected void applyYawToEntity(Entity entityToUpdate) {
-      entityToUpdate.setRenderYawOffset(this.rotationYaw);
-      float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
+   /**
+    * Applies this boat's yaw to the given entity. Used to update the orientation of its passenger.
+    */
+   protected void applyYawToEntity(Entity p_184454_1_) {
+      p_184454_1_.setRenderYawOffset(this.rotationYaw);
+      float f = MathHelper.wrapDegrees(p_184454_1_.rotationYaw - this.rotationYaw);
       float f1 = MathHelper.clamp(f, -105.0F, 105.0F);
-      entityToUpdate.prevRotationYaw += f1 - f;
-      entityToUpdate.rotationYaw += f1 - f;
-      entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
+      p_184454_1_.prevRotationYaw += f1 - f;
+      p_184454_1_.rotationYaw += f1 - f;
+      p_184454_1_.setRotationYawHead(p_184454_1_.rotationYaw);
    }
 
+   /**
+    * Applies this entity's orientation (pitch/yaw) to another entity. Used to update passenger orientation.
+    */
    @OnlyIn(Dist.CLIENT)
-   public void applyOrientationToEntity(Entity entityToUpdate) {
-      this.applyYawToEntity(entityToUpdate);
+   public void applyOrientationToEntity(Entity p_184190_1_) {
+      this.applyYawToEntity(p_184190_1_);
    }
 
-   protected void writeAdditional(CompoundNBT compound) {
-      compound.putString("Type", this.getBoatType().getName());
+   protected void writeAdditional(CompoundNBT p_213281_1_) {
+      p_213281_1_.putString("Type", this.getBoatType().getName());
    }
 
-   protected void readAdditional(CompoundNBT compound) {
-      if (compound.contains("Type", 8)) {
-         this.setBoatType(BananaBoatEntity.Type.getTypeFromString(compound.getString("Type")));
+   /**
+    * (abstract) Protected helper method to read subclass entity data from NBT.
+    */
+   protected void readAdditional(CompoundNBT p_70037_1_) {
+      if (p_70037_1_.contains("Type", 8)) {
+         this.setBoatType(BananaBoatEntity.Type.getTypeFromString(p_70037_1_.getString("Type")));
       }
 
    }
 
-   public ActionResultType processInitialInteract(PlayerEntity player, Hand hand) {
-      if (player.isSecondaryUseActive()) {
+   public ActionResultType processInitialInteract(PlayerEntity p_184230_1_, Hand p_184230_2_) {
+      if (p_184230_1_.shouldCancelInteraction()) {
          return ActionResultType.PASS;
       } else if (this.outOfControlTicks < 60.0F) {
          if (!this.world.isRemote) {
-            return player.startRiding(this) ? ActionResultType.CONSUME : ActionResultType.PASS;
+            return p_184230_1_.startRiding(this) ? ActionResultType.CONSUME : ActionResultType.PASS;
          } else {
             return ActionResultType.SUCCESS;
          }
@@ -720,17 +736,17 @@ public class BananaBoatEntity extends Entity {
       }
    }
 
-   protected void updateFallState(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
+   protected void updateFallState(double p_184231_1_, boolean p_184231_3_, BlockState p_184231_4_, BlockPos p_184231_5_) {
       this.lastYd = this.getMotion().y;
       if (!this.isPassenger()) {
-         if (onGroundIn) {
+         if (p_184231_3_) {
             if (this.fallDistance > 3.0F) {
                if (this.status != BananaBoatEntity.Status.ON_LAND) {
                   this.fallDistance = 0.0F;
                   return;
                }
 
-               this.onLivingFall(this.fallDistance, 1.0F);
+               this.handleFallDamage(this.fallDistance, 1.0F);
                if (!this.world.isRemote && !this.removed) {
                   this.remove();
                   if (this.world.getGameRules().getBoolean(GameRules.DO_ENTITY_DROPS)) {
@@ -746,29 +762,41 @@ public class BananaBoatEntity extends Entity {
             }
 
             this.fallDistance = 0.0F;
-         } else if (!this.world.getFluidState(this.func_233580_cy_().down()).isTagged(FluidTags.WATER) && y < 0.0D) {
-            this.fallDistance = (float)((double)this.fallDistance - y);
+         } else if (!this.world.getFluidState(this.getBlockPos().down()).isTagged(FluidTags.WATER) && p_184231_1_ < 0.0D) {
+            this.fallDistance = (float)((double)this.fallDistance - p_184231_1_);
          }
 
       }
    }
 
-   public boolean getPaddleState(int side) {
-      return this.dataManager.<Boolean>get(side == 0 ? field_199704_e : field_199705_f) && this.getControllingPassenger() != null;
+   public boolean getPaddleState(int p_184457_1_) {
+      return this.dataManager.<Boolean>get(p_184457_1_ == 0 ? field_199704_e : field_199705_f) && this.getControllingPassenger() != null;
    }
 
-   public void setDamageTaken(float damageTaken) {
-      this.dataManager.set(DAMAGE_TAKEN, damageTaken);
+   /**
+    * Sets the damage taken from the last hit.
+    */
+   public void setDamageTaken(float p_70266_1_) {
+      this.dataManager.set(DAMAGE_TAKEN, p_70266_1_);
    }
 
+   /**
+    * Gets the damage taken from the last hit.
+    */
    public float getDamageTaken() {
       return this.dataManager.get(DAMAGE_TAKEN);
    }
 
-   public void setTimeSinceHit(int timeSinceHit) {
-      this.dataManager.set(TIME_SINCE_HIT, timeSinceHit);
+   /**
+    * Sets the time to count down from since the last time entity was hit.
+    */
+   public void setTimeSinceHit(int p_70265_1_) {
+      this.dataManager.set(TIME_SINCE_HIT, p_70265_1_);
    }
 
+   /**
+    * Gets the time since the last hit.
+    */
    public int getTimeSinceHit() {
       return this.dataManager.get(TIME_SINCE_HIT);
    }
@@ -782,30 +810,40 @@ public class BananaBoatEntity extends Entity {
    }
 
    @OnlyIn(Dist.CLIENT)
-   public float getRockingAngle(float partialTicks) {
-      return MathHelper.lerp(partialTicks, this.prevRockingAngle, this.rockingAngle);
+   public float getRockingAngle(float p_203056_1_) {
+      return MathHelper.lerp(p_203056_1_, this.prevRockingAngle, this.rockingAngle);
    }
 
-   public void setForwardDirection(int forwardDirection) {
-      this.dataManager.set(FORWARD_DIRECTION, forwardDirection);
+   /**
+    * Sets the forward direction of the entity.
+    */
+   public void setForwardDirection(int p_70269_1_) {
+      this.dataManager.set(FORWARD_DIRECTION, p_70269_1_);
    }
 
+   /**
+    * Gets the forward direction of the entity.
+    */
    public int getForwardDirection() {
       return this.dataManager.get(FORWARD_DIRECTION);
    }
 
-   public void setBoatType(BananaBoatEntity.Type boatType) {
-      this.dataManager.set(BOAT_TYPE, boatType.ordinal());
+   public void setBoatType(BananaBoatEntity.Type p_184458_1_) {
+      this.dataManager.set(BOAT_TYPE, p_184458_1_.ordinal());
    }
 
    public BananaBoatEntity.Type getBoatType() {
       return BananaBoatEntity.Type.byId(this.dataManager.get(BOAT_TYPE));
    }
 
-   protected boolean canFitPassenger(Entity passenger) {
+   protected boolean canFitPassenger(Entity p_184219_1_) {
       return this.getPassengers().size() < 2 && !this.areEyesInFluid(FluidTags.WATER);
    }
 
+   /**
+    * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example,
+    * Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
+    */
    @Nullable
    public Entity getControllingPassenger() {
       List<Entity> list = this.getPassengers();
@@ -828,6 +866,16 @@ public class BananaBoatEntity extends Entity {
       return this.status == BananaBoatEntity.Status.UNDER_WATER || this.status == BananaBoatEntity.Status.UNDER_FLOWING_WATER;
    }
 
+   // Forge: Fix MC-119811 by instantly completing lerp on board
+   @Override
+   protected void addPassenger(Entity passenger) {
+      super.addPassenger(passenger);
+      if (this.canPassengerSteer() && this.lerpSteps > 0) {
+         this.lerpSteps = 0;
+         this.setPositionAndRotation(this.lerpX, this.lerpY, this.lerpZ, (float)this.lerpYaw, (float)this.lerpPitch);
+      }
+   }
+
    public static enum Status {
       IN_WATER,
       UNDER_WATER,
@@ -843,7 +891,7 @@ public class BananaBoatEntity extends Entity {
       JUNGLE(Blocks.JUNGLE_PLANKS, "jungle"),
       ACACIA(Blocks.ACACIA_PLANKS, "acacia"),
       DARK_OAK(Blocks.DARK_OAK_PLANKS, "dark_oak"),
-	  BANANA(ModBlocks.BANANA_BLOCK.get(), "banana");
+      BANANA(ModBlocks.BANANA_BLOCK.get(), "banana");
 
       private final String name;
       private final Block block;
@@ -865,20 +913,23 @@ public class BananaBoatEntity extends Entity {
          return this.name;
       }
 
-      public static BananaBoatEntity.Type byId(int id) {
+      /**
+       * Get a boat type by it's enum ordinal
+       */
+      public static BananaBoatEntity.Type byId(int p_184979_0_) {
          BananaBoatEntity.Type[] aboatentity$type = values();
-         if (id < 0 || id >= aboatentity$type.length) {
-            id = 0;
+         if (p_184979_0_ < 0 || p_184979_0_ >= aboatentity$type.length) {
+            p_184979_0_ = 0;
          }
 
-         return aboatentity$type[id];
+         return aboatentity$type[p_184979_0_];
       }
 
-      public static BananaBoatEntity.Type getTypeFromString(String nameIn) {
+      public static BananaBoatEntity.Type getTypeFromString(String p_184981_0_) {
          BananaBoatEntity.Type[] aboatentity$type = values();
 
          for(int i = 0; i < aboatentity$type.length; ++i) {
-            if (aboatentity$type[i].getName().equals(nameIn)) {
+            if (aboatentity$type[i].getName().equals(p_184981_0_)) {
                return aboatentity$type[i];
             }
          }
@@ -886,6 +937,4 @@ public class BananaBoatEntity extends Entity {
          return aboatentity$type[0];
       }
    }
-
-
 }

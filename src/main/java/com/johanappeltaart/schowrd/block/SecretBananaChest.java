@@ -130,7 +130,7 @@ public class SecretBananaChest extends Block {
 		return ModTileEntityTypes.SECRET_BANANA_CHEST.get().create();
 	}
 
-	@Override
+//	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 											 Hand handIn, BlockRayTraceResult result) {
 		if (!worldIn.isRemote) {
