@@ -2,6 +2,7 @@ package com.johanappeltaart.schowrd;
 
 //import com.johanappeltaart.schowrd.dimension.BoundlessBananasDimension;
 //import com.johanappeltaart.schowrd.configs.BoundlessBananasDimensionConfigs;
+import com.johanappeltaart.schowrd.common.biome.ModBiomeMaker;
 import com.johanappeltaart.schowrd.init.*;
         import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -51,6 +52,7 @@ public class Schowrd
         ModContainerTypes.CONTAINER_TYPE.register((FMLJavaModLoadingContext.get().getModEventBus()));
         ModEntityTypes.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+//        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
 //        ModFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
@@ -65,7 +67,8 @@ public class Schowrd
     private void setup(final FMLCommonSetupEvent event)
     {
 //        CapabilityPlayerPosAndDim.register();
-//        BoundlessBananasDimension.setupDimension();
+//        BoundlessBananasDimension.setupDimension();\
+//        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
 
 //        DeferredWorkQueue.runLater(()->{
 //            //GlobalEntityTypeAttributes.put(ModEntityTypes.BANANA_BOAT.get(),

@@ -6,7 +6,6 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
 public class BananaBlock extends Block {
-
 	public BananaBlock() {
 		super(Block.Properties.create(Material.CACTUS)
 				.hardnessAndResistance(1.0f)

@@ -2,19 +2,19 @@
     "type": "minecraft:crafting_shaped",
     "pattern":
     [
+      " x ",
       "xxx",
-      "xxx",
-      "xxx"
+      " xx"
     ],
     "key":{
       "x":
       {
-        "tag": "schowrd:banana"
+        "item": "schowrd:banana"
       }
     },
     "result":
     {
-      "item": "schowrd:banana_block",
-      "count": 1
+      "item": "schowrd:ddd_banana",
+      "count": 6
     }
   }

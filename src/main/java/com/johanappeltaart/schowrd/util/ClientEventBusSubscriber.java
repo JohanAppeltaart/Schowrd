@@ -22,6 +22,7 @@ public class ClientEventBusSubscriber {
         ScreenManager.registerFactory(ModContainerTypes.BANANA_CHEST.get(), SecretBananaChestScreen::new);
         RenderTypeLookup.setRenderLayer(ModBlocks.BANANA_SAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(ModBlocks.BANANA_GRASS_BLOCK.get(), RenderType.getCutoutMipped());
+//        RenderTypeLookup.setRenderLayer(ModBlocks.DDD_BANANA.get(),RenderType.getCutoutMipped());
 
 //        RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BANANA_BOAT.get(), BananaBoatRenderer::new);
     }

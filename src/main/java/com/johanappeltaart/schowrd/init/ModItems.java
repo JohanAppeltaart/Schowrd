@@ -74,6 +74,9 @@ public class ModItems {
             () -> new BlockItemBase(ModBlocks.BANANA_GRASS_BLOCK.get()));
     public static final RegistryObject<Item> BANANA_DIRT = ITEMS.register("banana_dirt",
             () -> new BlockItemBase(ModBlocks.BANANA_DIRT.get()));
+    public static final RegistryObject<Item> DDD_BANANA = ITEMS.register("ddd_banana",()-> new DDD_Banana(ModBlocks.DDD_BANANA.get()));
+
+
 
     //tree block items
     public static final RegistryObject<Item>BANANA_PLANKS_ITEM = ITEMS.register("banana_planks",

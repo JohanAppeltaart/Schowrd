@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smelting",
     "ingredient": {
-      "item": "schowrd:banana"
+      "tag": "schowrd:banana"
     },
     "result": "schowrd:baked_banana",
     "experience": 1.0,
