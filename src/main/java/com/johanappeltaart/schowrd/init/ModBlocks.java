@@ -6,6 +6,7 @@ import com.johanappeltaart.schowrd.block.trees.BananaTree;
 import net.minecraft.block.*;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.RegistryObject;
 
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,11 +19,16 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Schowrd.MOD_ID);
     //banana ingot then bars and ingot to tool with furnace idk banana chest
     //banana door big boi door, paxel and idk
+    //banana boots give slipperynes
+    //banana biome with dirt an grass and grass blocks and flowers idk?
 
     //Blocks
     public static final RegistryObject<Block> BANANA_BLOCK = BLOCKS.register("banana_block", BananaBlock::new);
     public static final RegistryObject<Block> BANANA_IRON_BLOCK = BLOCKS.register("banana_iron_block", BananaBlock::new);
     public static final RegistryObject<Block> BANANA_CAKE = BLOCKS.register("banana_cake", BananaCake::new);
+    public static final RegistryObject<Block> BANANA_GRASS_BLOCK = BLOCKS.register("banana_grass_block", BananaGrassBlock::new);
+    public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt", BananaDirt::new);
+//    public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt", new Block(Block.Properties.from(Blocks.DIRT)));
 
     //Chest
     public static final RegistryObject<Block> SECRET_BANANA_CHEST = BLOCKS.register("secret_banana_chest", SecretBananaChest::new);

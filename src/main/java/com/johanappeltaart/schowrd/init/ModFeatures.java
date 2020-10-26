@@ -1,4 +1,4 @@
-package com.johanappeltaart.schowrd.features;
+package com.johanappeltaart.schowrd.init;
 
 import com.google.common.collect.ImmutableList;
 import com.johanappeltaart.schowrd.init.ModBlocks;

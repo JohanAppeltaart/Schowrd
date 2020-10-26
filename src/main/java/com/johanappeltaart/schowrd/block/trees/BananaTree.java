@@ -1,8 +1,7 @@
 package com.johanappeltaart.schowrd.block.trees;
 
-import com.johanappeltaart.schowrd.features.ModFeatures;
+import com.johanappeltaart.schowrd.init.ModFeatures;
 import net.minecraft.block.trees.BigTree;
-import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 

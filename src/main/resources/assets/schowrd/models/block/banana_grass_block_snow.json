@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "schowrd:blocks/banana_grass_block_top",
+    "bottom": "schowrd:blocks/banana_dirt",
+    "side": "schowrd:blocks/banana_grass_block_snow",
+    "particle": "schowrd:blocks/banana_dirt"
+  }
+}

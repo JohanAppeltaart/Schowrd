@@ -1,29 +1,18 @@
 package com.johanappeltaart.schowrd;
 
-import com.johanappeltaart.schowrd.capabilities.CapabilityPlayerPosAndDim;
-import com.johanappeltaart.schowrd.configs.BoundlessBananasDungeonsConfigs;
 //import com.johanappeltaart.schowrd.dimension.BoundlessBananasDimension;
 //import com.johanappeltaart.schowrd.configs.BoundlessBananasDimensionConfigs;
-import com.johanappeltaart.schowrd.features.ModFeatures;
 import com.johanappeltaart.schowrd.init.*;
-import com.johanappeltaart.schowrd.util.ConfigHelper;
-import net.minecraft.block.Block;
+        import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
-import net.minecraft.item.ItemGroup;
+        import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.TeleportationRepositioner;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.event.RegistryEvent;
+        import net.minecraftforge.common.MinecraftForge;
+        import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.DeferredWorkQueue;
-import net.minecraftforge.fml.InterModComms;
+        import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+        import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -61,6 +50,7 @@ public class Schowrd
         ModTileEntityTypes.TILE_ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModContainerTypes.CONTAINER_TYPE.register((FMLJavaModLoadingContext.get().getModEventBus()));
         ModEntityTypes.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
 //        ModFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         // Register ourselves for server and other game events we are interested in
