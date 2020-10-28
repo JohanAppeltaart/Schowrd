@@ -55,11 +55,6 @@ public class Schowrd
         ModContainerTypes.CONTAINER_TYPE.register((FMLJavaModLoadingContext.get().getModEventBus()));
         ModEntityTypes.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        //        ModBlockColors.init();
-//        FMLJavaModLoadingContext.get().getModEventBus().register(onBiomeRegistry.class);
-//        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
-//        ModFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -72,14 +67,6 @@ public class Schowrd
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("THis is loding");
-//        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(true),"banana_plains", BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
-//        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(false),"banana_plains", BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS_KEY, 10));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation("banana_plains")),22));//,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS_KEY, 10
-//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
-//        BiomeManager.removeBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(Biomes.SNOWY_TUNDRA,10));
-//        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation("schowrd", "banana_plains")), 10));
-//        CapabilityPlayerPosAndDim.register();
 //        BoundlessBananasDimension.setupDimension();\
 //        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
 
