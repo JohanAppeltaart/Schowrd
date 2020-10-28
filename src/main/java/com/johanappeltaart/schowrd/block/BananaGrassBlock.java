@@ -1,10 +1,15 @@
 package com.johanappeltaart.schowrd.block;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.DoublePlantBlock;
 import net.minecraft.block.GrassBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.common.ToolType;
 
 public class BananaGrassBlock extends GrassBlock {
@@ -18,4 +23,5 @@ public class BananaGrassBlock extends GrassBlock {
 				.harvestTool(ToolType.SHOVEL)
 				);
 	}
+
 }

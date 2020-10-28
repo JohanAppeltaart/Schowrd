@@ -1,19 +1,21 @@
 package com.johanappeltaart.schowrd;
 
-//import com.johanappeltaart.schowrd.dimension.BoundlessBananasDimension;
-//import com.johanappeltaart.schowrd.configs.BoundlessBananasDimensionConfigs;
-import com.johanappeltaart.schowrd.common.biome.ModBiomeMaker;
+//import com.johanappeltaart.schowrd.common.biome.ModBiomeMaker;
+import com.johanappeltaart.schowrd.common.biome.BananaPlains;
 import com.johanappeltaart.schowrd.init.*;
-        import net.minecraft.block.Block;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-        import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-        import net.minecraftforge.common.MinecraftForge;
-        import net.minecraftforge.event.RegistryEvent;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeRegistry;
+import net.minecraftforge.common.BiomeManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-        import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-        import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("schowrd")
+@Mod.EventBusSubscriber(modid = Schowrd.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD)
 public class Schowrd
 {
     // Directly reference a log4j logger.
@@ -52,6 +55,8 @@ public class Schowrd
         ModContainerTypes.CONTAINER_TYPE.register((FMLJavaModLoadingContext.get().getModEventBus()));
         ModEntityTypes.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        //        ModBlockColors.init();
+//        FMLJavaModLoadingContext.get().getModEventBus().register(onBiomeRegistry.class);
 //        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
 //        ModFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
@@ -66,6 +71,14 @@ public class Schowrd
 
     private void setup(final FMLCommonSetupEvent event)
     {
+        LOGGER.info("THis is loding");
+//        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(true),"banana_plains", BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
+//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
+//        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(false),"banana_plains", BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS_KEY, 10));
+//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation("banana_plains")),22));//,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS_KEY, 10
+//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
+//        BiomeManager.removeBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(Biomes.SNOWY_TUNDRA,10));
+//        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY, new ResourceLocation("schowrd", "banana_plains")), 10));
 //        CapabilityPlayerPosAndDim.register();
 //        BoundlessBananasDimension.setupDimension();\
 //        ModBiomes.registerBiome(23,ModBiomes.BANANA_PLAINS,ModBiomeMaker.createBananaPlains(false));
@@ -85,7 +98,25 @@ public class Schowrd
         // do something that can only be done on the client
 //        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().gameSettings);
     }
-    
+
+    @SubscribeEvent
+    public static void onBiomeRegistry(final RegistryEvent.Register<Biome> biomeRegistryEvent) {
+        LOGGER.info("THis is loding");
+        biomeRegistryEvent.getRegistry().register(BananaPlains.BANANA_PLAINS);//<<<<<<<<<<<<<<<<was the error all along
+        ModBiomes.registerBiomes();
+//        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(true),"banana_plains", BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
+        LOGGER.info(BiomeRegistry.getKeyFromID(2));
+//        biomeRegistryEvent.getRegistry().register(ModBiomeMaker.makeBanana_Plains(true));
+//        BiomeManager.addBiome(BiomeManager.BiomeType.ICY,new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
+
+
+
+
+    }
+
+
+
+
     public static final ItemGroup TAB = new ItemGroup("schowrdTab") {
     	@Override  
     	public ItemStack createIcon() {

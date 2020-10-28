@@ -15,7 +15,7 @@ public class BananaIronBlock extends Block {
 				.slipperiness(1.1f)
 				.sound(SoundType.METAL)
 				.harvestLevel(1)
-				.requiresTool()
+				.setRequiresTool()
 //				.func_235861_h_()
 				.harvestTool(ToolType.PICKAXE)
 				);

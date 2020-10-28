@@ -1,97 +1,103 @@
 package com.johanappeltaart.schowrd.container;
 
-import com.johanappeltaart.schowrd.init.ModBlocks;
-import com.johanappeltaart.schowrd.init.ModContainerTypes;
-import com.johanappeltaart.schowrd.tileentity.BananaChestTileEntity;
+//import com.johanappeltaart.schowrd.block.SecretBananaChest;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IWorldPosCallable;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-import java.util.Objects;
+public class SecretBananaChestContainer extends Container implements IForgeRegistryEntry<SecretBananaChestContainer> {
+    private final IInventory lowerChestInventory;
+    private final int numRows;
 
-public class SecretBananaChestContainer extends Container {
-//    private final IInventory lowerChestInventory;
-    private final int numRows = 6;//36;//was 22// 108 slots
-public final BananaChestTileEntity tileEntity;
-    private final IWorldPosCallable canInteractWithCallable;
+    private SecretBananaChestContainer(ContainerType<?> p_i50091_1_, int p_i50091_2_, PlayerInventory p_i50091_3_, int p_i50091_4_) {
+        this(p_i50091_1_, p_i50091_2_, p_i50091_3_, new Inventory(9 * p_i50091_4_), p_i50091_4_);
+    }
 
-public SecretBananaChestContainer(final int windowId, final PlayerInventory playerInventory, final BananaChestTileEntity tileEntity) {
-    super(ModContainerTypes.BANANA_CHEST.get(), windowId);//,new Inventory(9*22),22
-    this.tileEntity = tileEntity;
-    this.canInteractWithCallable = IWorldPosCallable.of(tileEntity.getWorld(), tileEntity.getPos());
+    public static SecretBananaChestContainer createGeneric9X1(int p_216986_0_, PlayerInventory p_216986_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X1, p_216986_0_, p_216986_1_, 1);
+    }
 
-    // Main Inventory
-    int startX = 8;
-    int startY = 18;
-    int slotSizePlus2 = 18;
-    for (int row = 0; row < 4; ++row) {
-        for (int column = 0; column < 9; ++column) {
-            this.addSlot(new Slot(tileEntity, (row * 9) + column, startX + (column * slotSizePlus2),
-                    startY + (row * slotSizePlus2)));
+    public static SecretBananaChestContainer createGeneric9X2(int p_216987_0_, PlayerInventory p_216987_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X2, p_216987_0_, p_216987_1_, 2);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X3(int p_216988_0_, PlayerInventory p_216988_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X3, p_216988_0_, p_216988_1_, 3);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X4(int p_216991_0_, PlayerInventory p_216991_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X4, p_216991_0_, p_216991_1_, 4);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X5(int p_216989_0_, PlayerInventory p_216989_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X5, p_216989_0_, p_216989_1_, 5);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X6(int p_216990_0_, PlayerInventory p_216990_1_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X6, p_216990_0_, p_216990_1_, 6);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X3(int p_216992_0_, PlayerInventory p_216992_1_, IInventory p_216992_2_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X3, p_216992_0_, p_216992_1_, p_216992_2_, 3);
+    }
+
+    public static SecretBananaChestContainer createGeneric9X6(int p_216984_0_, PlayerInventory p_216984_1_, IInventory p_216984_2_) {
+        return new SecretBananaChestContainer(ContainerType.GENERIC_9X6, p_216984_0_, p_216984_1_, p_216984_2_, 6);
+    }
+
+    public SecretBananaChestContainer(ContainerType<?> p_i50092_1_, int p_i50092_2_, PlayerInventory p_i50092_3_, IInventory p_i50092_4_, int p_i50092_5_) {
+        super(p_i50092_1_, p_i50092_2_);
+        assertInventorySize(p_i50092_4_, p_i50092_5_ * 9);
+        this.lowerChestInventory = p_i50092_4_;
+        this.numRows = p_i50092_5_;
+        p_i50092_4_.openInventory(p_i50092_3_.player);
+        int i = (this.numRows - 4) * 18;
+
+        for(int j = 0; j < this.numRows; ++j) {
+            for(int k = 0; k < 9; ++k) {
+                this.addSlot(new Slot(p_i50092_4_, k + j * 9, 8 + k * 18, 18 + j * 18));
+            }
         }
-    }
 
-    // Main Player Inventory
-    int startPlayerInvY = startY * 5 + 12;
-    for (int row = 0; row < 3; ++row) {
-        for (int column = 0; column < 9; ++column) {
-            this.addSlot(new Slot(playerInventory, 9 + (row * 9) + column, startX + (column * slotSizePlus2),
-                    startPlayerInvY + (row * slotSizePlus2)));
+        for(int l = 0; l < 3; ++l) {
+            for(int j1 = 0; j1 < 9; ++j1) {
+                this.addSlot(new Slot(p_i50092_3_, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
+            }
         }
-    }
 
-    // Hotbar
-    int hotbarY = startPlayerInvY + (startPlayerInvY / 2) + 7;
-    for (int column = 0; column < 9; ++column) {
-        this.addSlot(new Slot(playerInventory, column, startX + (column * slotSizePlus2), hotbarY));
-    }
-}
-
-    private static BananaChestTileEntity getTileEntity(final PlayerInventory playerInventory, final PacketBuffer data){
-        Objects.requireNonNull(playerInventory, "playerInventory cannot be null");
-        Objects.requireNonNull(data, "data cannot be null");
-        final TileEntity tileAtPos = playerInventory.player.world.getTileEntity(data.readBlockPos());
-        if (tileAtPos instanceof BananaChestTileEntity) {
-            return (BananaChestTileEntity) tileAtPos;
+        for(int i1 = 0; i1 < 9; ++i1) {
+            this.addSlot(new Slot(p_i50092_3_, i1, 8 + i1 * 18, 161 + i));
         }
-        throw new IllegalStateException("Tile entity is not correct! " + tileAtPos);
-    }
 
-//    public BananaChestContainer(final int windowId,final PlayerInventory playerInventory,final PacketBuffer data){
-//        this(windowId,playerInventory,getTileEntity(playerInventory,data));
-//    }
-    public SecretBananaChestContainer(final int windowId, final PlayerInventory playerInventory, final PacketBuffer data) {
-        this(windowId, playerInventory,getTileEntity(playerInventory,data));
     }
-
 
     /**
      * Determines whether supplied player can use this container
      */
-    public boolean canInteractWith(PlayerEntity playerIn) {
-//        return this.lowerChestInventory.isUsableByPlayer(playerIn);
-        return isWithinUsableDistance(canInteractWithCallable,playerIn, ModBlocks.SECRET_BANANA_CHEST.get());
+    public boolean canInteractWith(PlayerEntity p_75145_1_) {
+        return this.lowerChestInventory.isUsableByPlayer(p_75145_1_);
     }
 
     /**
      * Handle when the stack in slot {@code index} is shift-clicked. Normally this moves the stack between the player
      * inventory and the other inventory(s).
      */
-    public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
+    public ItemStack transferStackInSlot(PlayerEntity p_82846_1_, int p_82846_2_) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(index);
+        Slot slot = this.inventorySlots.get(p_82846_2_);
         if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-            if (index < this.numRows * 9) {//this.numRows
+            if (p_82846_2_ < this.numRows * 9) {
                 if (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
@@ -112,18 +118,18 @@ public SecretBananaChestContainer(final int windowId, final PlayerInventory play
     /**
      * Called when the container is closed.
      */
-    public void onContainerClosed(PlayerEntity playerIn) {
-        super.onContainerClosed(playerIn);
-        this.tileEntity.closeInventory(playerIn);
+    public void onContainerClosed(PlayerEntity p_75134_1_) {
+        super.onContainerClosed(p_75134_1_);
+        this.lowerChestInventory.closeInventory(p_75134_1_);
     }
 
+//     * @see #field_75155_e
     /**
      * Gets the inventory associated with this chest container.
      *
-     * @see #//field_75155_e
      */
     public IInventory getLowerChestInventory() {
-        return this.tileEntity;
+        return this.lowerChestInventory;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -131,38 +137,17 @@ public SecretBananaChestContainer(final int windowId, final PlayerInventory play
         return this.numRows;
     }
 
+    @Override
+    public SecretBananaChestContainer setRegistryName(ResourceLocation name) {
+        return null;
+    }
+    @Override
+    public ResourceLocation getRegistryName() {
+        return null;
+    }
 
-//    private BananaChestContainer(ContainerType<?> type, int id, PlayerInventory player, int rows) {
-//        this(type, id, player, new Inventory(9 * rows), rows);
-//    }
-//
-//    public static BananaChestContainer createBananaChest(int id, PlayerInventory player, IInventory blockEntity) {
-//        return new BananaChestContainer(ContainerType.GENERIC_9X6, id, player, 6);
-//    }
-//ContainerType type,
-//    public BananaChestContainer(final int id, final PlayerInventory playerInventoryIn, IInventory p_i50092_4_, int rows) {
-//        super(ModContainerTypes.BANANA_CHEST.get(),id);
-//        assertInventorySize(p_i50092_4_, rows * 9);
-//        this.lowerChestInventory = p_i50092_4_;
-//        this.numRows = rows;
-//        p_i50092_4_.openInventory(playerInventoryIn.player);
-//        int i = (this.numRows - 4) * 18;
-//
-//        for(int j = 0; j < this.numRows; ++j) {
-//            for(int k = 0; k < 9; ++k) {
-//                this.addSlot(new Slot(p_i50092_4_, k + j * 9, 8 + k * 18, 18 + j * 18));
-//            }
-//        }
-//
-//        for(int l = 0; l < 3; ++l) {
-//            for(int j1 = 0; j1 < 9; ++j1) {
-//                this.addSlot(new Slot(playerInventoryIn, j1 + l * 9 + 9, 8 + j1 * 18, 103 + l * 18 + i));
-//            }
-//        }
-//
-//        for(int i1 = 0; i1 < 9; ++i1) {
-//            this.addSlot(new Slot(playerInventoryIn, i1, 8 + i1 * 18, 161 + i));
-//        }
-//
-//    }
+    @Override
+    public Class<SecretBananaChestContainer> getRegistryType() {
+        return null;
+    }
 }

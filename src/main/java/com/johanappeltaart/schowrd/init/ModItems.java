@@ -7,6 +7,7 @@ import com.johanappeltaart.schowrd.entity.item.BananaBoatEntity;
 import com.johanappeltaart.schowrd.items.*;
 import com.johanappeltaart.schowrd.tools.ModItemTier;
 //import net.minecraft.entity.item.BoatEntity;
+import net.minecraft.block.FenceGateBlock;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
@@ -37,31 +38,40 @@ public class ModItems {
     public static final RegistryObject<ShovelItem> BANANA_SHOVEL = ITEMS.register("banana_shovel",
             ()-> new ShovelItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
 
-    public static final RegistryObject<AxeItem> BANANA_AXE = ITEMS.register("banana_axe",
-            ()-> new AxeItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(9).saturation(3.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,60),0.5f).build())));
-
+    public static final RegistryObject<AxeItem> BANANA_AXE = ITEMS.register("banana_axe", BananaAxeItem::new);
     public static final RegistryObject<HoeItem> BANANA_HOE = ITEMS.register("banana_hoe",
             ()-> new HoeItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
 
     //Armor Items
     public static final RegistryObject<ArmorItem> BANANA_HELMET = ITEMS.register("banana_helmet",()->
-       new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.HEAD,new Item.Properties().group(Schowrd.TAB)));
+       new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.HEAD,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(15).saturation(5.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
     public static final RegistryObject<ArmorItem> BANANA_CHESTPLATE = ITEMS.register("banana_chestplate",()->
-        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.CHEST,new Item.Properties().group(Schowrd.TAB)));
+        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.CHEST,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(24).saturation(8.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
     public static final RegistryObject<ArmorItem> BANANA_LEGGINGS = ITEMS.register("banana_leggings",()->
-        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.LEGS,new Item.Properties().group(Schowrd.TAB)));
-    public static final RegistryObject<ArmorItem> BANANA_BOOTS = ITEMS.register("banana_boots",()->
-        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.FEET,new Item.Properties().group(Schowrd.TAB)));
+        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.LEGS,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(21).saturation(7.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+//    public static final RegistryObject<ArmorItem> BANANA_BOOTS = ITEMS.register("banana_boots",()->
+//        new ArmorItem(ModArmorMaterial.BANANA, EquipmentSlotType.FEET,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(12).saturation(4.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+    public static final RegistryObject<ArmorItem> BANANA_BOOTS = ITEMS.register("banana_boots",Banana_Boots::new);
+
+
+
 
     //boat
     public static final RegistryObject<BananaBoatItem> BANANA_BOAT = ITEMS.register("banana_boat",
             ()->new BananaBoatItem(BananaBoatEntity.Type.BANANA, new Item.Properties().group(Schowrd.TAB).maxStackSize(1)));//ItemGroup.TRANSPORTATION
 
     //cake item
-    public static final RegistryObject<Item>BANANA_CAKE_ITEM = ITEMS.register("banana_cake",
+    public static final RegistryObject<Item> BANANA_CAKE_ITEM = ITEMS.register("banana_cake",
             () -> new   BlockItemBase(ModBlocks.BANANA_CAKE.get()));
 
-
+    //Door
+    public static final RegistryObject<Item> BANANA_DOOR_ITEM = ITEMS.register("banana_door",
+            () -> new TallBlockItem(ModBlocks.BANANA_DOOR.get(), new Item.Properties().group(Schowrd.TAB)));
+    //Fence Stuff
+    public static final RegistryObject<Item> BANANA_FENCE_ITEM = ITEMS.register("banana_fence",
+            () -> new BlockItemBase(ModBlocks.BANANA_FENCE.get()));
+    public static final RegistryObject<Item> BANANA_FENCE_GATE_ITEM = ITEMS.register("banana_fence_gate",
+            () -> new BlockItemBase(ModBlocks.BANANA_FENCE_GATE.get()));
 
     //Block Items
     public static final RegistryObject<Item>BANANA_BLOCK_ITEM = ITEMS.register("banana_block",

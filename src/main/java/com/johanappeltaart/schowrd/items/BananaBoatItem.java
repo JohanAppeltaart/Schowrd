@@ -35,7 +35,7 @@ public class BananaBoatItem extends Item {
       ItemStack itemstack = playerIn.getHeldItem(handIn);
       RayTraceResult raytraceresult = rayTrace(worldIn, playerIn, RayTraceContext.FluidMode.ANY);
       if (raytraceresult.getType() == RayTraceResult.Type.MISS) {
-         return ActionResult.pass(itemstack);
+         return ActionResult.resultPass(itemstack);
       } else {
          Vector3d vector3d = playerIn.getLook(1.0F);
          double d0 = 5.0D;
@@ -46,7 +46,7 @@ public class BananaBoatItem extends Item {
             for(Entity entity : list) {
                AxisAlignedBB axisalignedbb = entity.getBoundingBox().grow((double)entity.getCollisionBorderSize());
                if (axisalignedbb.contains(vector3d1)) {
-                  return ActionResult.pass(itemstack);
+                  return ActionResult.resultPass(itemstack);
                }
             }
          }
@@ -55,8 +55,8 @@ public class BananaBoatItem extends Item {
             BananaBoatEntity boatentity = new BananaBoatEntity(worldIn, raytraceresult.getHitVec().x, raytraceresult.getHitVec().y, raytraceresult.getHitVec().z);
             boatentity.setBoatType(this.type);
             boatentity.rotationYaw = playerIn.rotationYaw;
-            if (!worldIn.doesNotCollide(boatentity, boatentity.getBoundingBox().grow(-0.1D))) {
-               return ActionResult.fail(itemstack);
+            if (!worldIn.hasNoCollisions(boatentity, boatentity.getBoundingBox().grow(-0.1D))) {
+               return ActionResult.resultFail(itemstack);
             } else {
                if (!worldIn.isRemote) {
                   worldIn.addEntity(boatentity);
@@ -66,10 +66,10 @@ public class BananaBoatItem extends Item {
                }
 
                playerIn.addStat(Stats.ITEM_USED.get(this));
-               return ActionResult.method_29237(itemstack, worldIn.isRemote());
+               return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
             }
          } else {
-            return ActionResult.pass(itemstack);
+            return ActionResult.resultPass(itemstack);
          }
       }
    }

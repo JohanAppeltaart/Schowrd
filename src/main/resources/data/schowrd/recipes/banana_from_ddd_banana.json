@@ -1,19 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
-    " x ",
-    "xxx",
-    " xx"
-  ],
-  "key":{
-    "x":
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
     {
       "item": "schowrd:ddd_banana"
     }
-  },
-  "result":
-  {
+  ],
+  "result": {
     "item": "schowrd:banana",
     "count": 6
   }

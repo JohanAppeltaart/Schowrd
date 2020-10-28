@@ -1,8 +1,11 @@
 package com.johanappeltaart.schowrd.init;
 
 import com.johanappeltaart.schowrd.Schowrd;
+//import com.johanappeltaart.schowrd.container.BananaChestContainer;
 import com.johanappeltaart.schowrd.container.SecretBananaChestContainer;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -12,10 +15,12 @@ import net.minecraftforge.registries.ForgeRegistries;
     public class ModContainerTypes{
     public static final DeferredRegister<ContainerType<?>> CONTAINER_TYPE =  DeferredRegister.create(ForgeRegistries.CONTAINERS, Schowrd.MOD_ID);
 //    public static final RegistryObject<ContainerType<BananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()->BananaChestContainer::new);
-    public static final RegistryObject<ContainerType<SecretBananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()-> IForgeContainerType.create(SecretBananaChestContainer::new));
-//    public static final RegistryObject<ContainerType>  BANANA_CHEST = register("banana_chest", BananaChestContainer::createBananaChest);IForgeContainerType.create(BananaChestContainer::new)
+//    public static final RegistryObject<ContainerType<SecretBananaChestContainer>> BANANA_CHEST = CONTAINER_TYPE.register("banana_chest",()-> IForgeContainerType.create(SecretBananaChestContainer::createGeneric9X1));
+    public static final ContainerType<SecretBananaChestContainer>  BANANA_CHEST = register("banana_chest", SecretBananaChestContainer::createGeneric9X1);//IForgeContainerType.create(BananaChestContainer::new)
 
-
+    private static <T extends Container> ContainerType<T> register(String p_221505_0_, ContainerType.IFactory<T> p_221505_1_) {
+        return Registry.register(Registry.MENU, p_221505_0_, new ContainerType<>(p_221505_1_));
+    }
 //    private final ModContainerTypes.IFactory<T> factory;
 //
 //    private static <T extends Container> ContainerType<T> register(String key, ModContainerTypes.IFactory<T> factory) {

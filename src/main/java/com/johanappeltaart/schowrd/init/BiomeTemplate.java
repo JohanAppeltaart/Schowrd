@@ -44,7 +44,7 @@ public class BiomeTemplate
         // Configure the biome generation
         BiomeGenerationSettings.Builder biomeGenBuilder = new BiomeGenerationSettings.Builder();
         this.configureGeneration(biomeGenBuilder);
-        biomeBuilder.generationSettings(biomeGenBuilder.build());
+        biomeBuilder.withGenerationSettings(biomeGenBuilder.build());
 
         // Configure mob spawning
         MobSpawnInfo.Builder mobSpawnBuilder = new MobSpawnInfo.Builder();

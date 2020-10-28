@@ -9,12 +9,13 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 public class BananaTree extends BigTree {
-    @Nullable
-    protected ConfiguredFeature<BaseTreeFeatureConfig,?> createTreeFeature(Random p_225546_1_, boolean p_225546_2_) {
+    @Override
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean largeHive) {
         return ModFeatures.BANANA_TREE;
     }
-    @Nullable
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> createLargeTreeFeature(Random p_225547_1_) {
+    @Override
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getHugeTreeFeature(Random rand) {
         return ModFeatures.MEGA_BANANA_TREE;
     }
+
 }
