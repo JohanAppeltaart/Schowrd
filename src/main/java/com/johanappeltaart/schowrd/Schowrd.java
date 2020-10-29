@@ -1,15 +1,13 @@
 package com.johanappeltaart.schowrd;
 
 //import com.johanappeltaart.schowrd.common.biome.ModBiomeMaker;
-import com.johanappeltaart.schowrd.common.biome.BananaPlains;
+import com.johanappeltaart.schowrd.common.biome.BananaMountains;
 import com.johanappeltaart.schowrd.init.*;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeRegistry;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -78,7 +76,7 @@ public class Schowrd
 
         // some preinit code
         LOGGER.info("HELLO FROM BANANAS");
-        LOGGER.info("BANANA BLOCK =! >> {}", Blocks.BONE_BLOCK.getRegistryName());
+        LOGGER.info("BANANA BLOCK =! >> {}", ModBlocks.BANANA_BLOCK.get().getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -89,7 +87,7 @@ public class Schowrd
     @SubscribeEvent
     public static void onBiomeRegistry(final RegistryEvent.Register<Biome> biomeRegistryEvent) {
         LOGGER.info("THis is loding");
-        biomeRegistryEvent.getRegistry().register(BananaPlains.BANANA_PLAINS);//<<<<<<<<<<<<<<<<was the error all along
+        biomeRegistryEvent.getRegistry().register(BananaMountains.BANANA_MOUNTAINS);//<<<<<<<<<<<<<<<<was the error all along
         ModBiomes.registerBiomes();
 //        ModBiomes.initBiome(ModBiomeMaker.makeBanana_Plains(true),"banana_plains", BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(ModBiomes.BANANA_PLAINS,10));
         LOGGER.info(BiomeRegistry.getKeyFromID(2));

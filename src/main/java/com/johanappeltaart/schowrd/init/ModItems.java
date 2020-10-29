@@ -41,6 +41,18 @@ public class ModItems {
     public static final RegistryObject<AxeItem> BANANA_AXE = ITEMS.register("banana_axe", BananaAxeItem::new);
     public static final RegistryObject<HoeItem> BANANA_HOE = ITEMS.register("banana_hoe",
             ()-> new HoeItem(ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+    public static final RegistryObject<BetterHoeItem> BETTER_BANANA_HOE = ITEMS.register("better_banana_hoe",
+            ()-> new BetterHoeItem(2,ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+    public static final RegistryObject<BetterHoeItem> BETTER_BETTER_BANANA_HOE = ITEMS.register("better_better_banana_hoe",
+            ()-> new BetterHoeItem(5,ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+    public static final RegistryObject<BetterHoeItem> BETTER_BETTER_BETTER_BANANA_HOE = ITEMS.register("better_better_better_banana_hoe",
+            ()-> new BetterHoeItem(13,ModItemTier.BANANA,0,-2.4f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+
+    public static final RegistryObject<PaxelItem> BANANA_PAXEL = ITEMS.register("banana_paxel",
+            ()-> new PaxelItem(ModItemTier.BANANA,16,0.0f,new Item.Properties().group(Schowrd.TAB).food(new Food.Builder().hunger(3).saturation(1.0f).effect(()->new EffectInstance(Effects.GLOWING,200),0.8f).effect(()->new EffectInstance(Effects.POISON,20),0.5f).build())));
+
+
+
 
     //Armor Items
     public static final RegistryObject<ArmorItem> BANANA_HELMET = ITEMS.register("banana_helmet",()->
@@ -80,11 +92,16 @@ public class ModItems {
             () -> new BlockItemBase(ModBlocks.BANANA_IRON_BLOCK.get()));
     public static final RegistryObject<Item>SECRET_BANANA_CHEST_ITEM = ITEMS.register("secret_banana_chest",
             () -> new BlockItemBase(ModBlocks.SECRET_BANANA_CHEST.get()));
-    public static final RegistryObject<Item> BANANA_GRASS_BLOCK = ITEMS.register("banana_grass_block",
+    public static final RegistryObject<Item> BANANA_GRASS_BLOCK_ITEM = ITEMS.register("banana_grass_block",
             () -> new BlockItemBase(ModBlocks.BANANA_GRASS_BLOCK.get()));
-    public static final RegistryObject<Item> BANANA_DIRT = ITEMS.register("banana_dirt",
+    public static final RegistryObject<Item> BANANA_DIRT_ITEM = ITEMS.register("banana_dirt",
             () -> new BlockItemBase(ModBlocks.BANANA_DIRT.get()));
-    public static final RegistryObject<Item> DDD_BANANA = ITEMS.register("ddd_banana",()-> new DDD_Banana(ModBlocks.DDD_BANANA.get()));
+    public static final RegistryObject<Item> BANANA_GRAVEL_ITEM = ITEMS.register("banana_gravel",
+            () -> new BlockItemBase(ModBlocks.BANANA_GRAVEL.get()));
+    public static final RegistryObject<Item> DDD_BANANA_ITEM = ITEMS.register("ddd_banana",
+            ()-> new DDD_Banana(ModBlocks.DDD_BANANA.get()));
+    public static final RegistryObject<Item> CARAMEL_BANANA_BLOCK_ITEM = ITEMS.register("caramel_banana_block",
+            ()-> new BlockItemBase(ModBlocks.CARAMEL_BANANA_BLOCK.get()));
 
 
 
@@ -97,7 +114,7 @@ public class ModItems {
             () -> new BlockItemBase(ModBlocks.BANANA_LOG.get()));
     public static final RegistryObject<Item>STRIPPED_BANANA_LOG_ITEM = ITEMS.register("stripped_banana_log",
             () -> new BlockItemBase(ModBlocks.STRIPPED_BANANA_LOG.get()));
-    public static final RegistryObject<Item>BANANA_SAPLING= ITEMS.register("banana_sapling",
+    public static final RegistryObject<Item>BANANA_SAPLING_ITEM= ITEMS.register("banana_sapling",
             () -> new BlockItemBase(ModBlocks.BANANA_SAPLING.get()));
 
 }

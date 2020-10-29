@@ -5,12 +5,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 
-public class BananaBlock extends Block {
-	public BananaBlock() {
-		super(Block.Properties.create(Material.CLAY)
-				.hardnessAndResistance(1.0f)
-				.slipperiness(2.0f)
-				.sound(SoundType.CROP)
+public class CaramelBananaBlock extends Block {
+	public CaramelBananaBlock() {
+		super(Properties.create(Material.CLAY)
+				.hardnessAndResistance(1.4f)
+				.slipperiness(3.0f)
+				.sound(SoundType.SHROOMLIGHT)
 				.harvestLevel(0)
 				.harvestTool(ToolType.HOE)
 				);

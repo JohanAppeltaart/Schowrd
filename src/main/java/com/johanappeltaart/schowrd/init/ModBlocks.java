@@ -22,14 +22,16 @@ public class ModBlocks {
     //banana ingot then bars and ingot to tool with furnace idk banana chest
     //banana door big boi door, paxel and idk
     //banana boots give slipperynes
-    //banana biome with dirt an grass and grass blocks and flowers idk?
+    //banana biome with dirt an grass and grass blocks and flowers idk? kinda done
 
     //Blocks
     public static final RegistryObject<Block> BANANA_BLOCK = BLOCKS.register("banana_block", BananaBlock::new);
+    public static final RegistryObject<Block> CARAMEL_BANANA_BLOCK = BLOCKS.register("caramel_banana_block", CaramelBananaBlock::new);
     public static final RegistryObject<Block> BANANA_IRON_BLOCK = BLOCKS.register("banana_iron_block", BananaBlock::new);
     public static final RegistryObject<CakeBlock> BANANA_CAKE = BLOCKS.register("banana_cake", BananaCake::new);
     public static final RegistryObject<Block> BANANA_GRASS_BLOCK = BLOCKS.register("banana_grass_block", BananaGrassBlock::new);
     public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt", BananaDirt::new);
+    public static final RegistryObject<Block> BANANA_GRAVEL = BLOCKS.register("banana_gravel", BananaGravel::new);
 //    public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt",()-> new Block(Block.Properties.from(Blocks.DIRT)));
     public static final RegistryObject<Block> DDD_BANANA = BLOCKS.register("ddd_banana", DDD_Banana::new);
     //Chest
