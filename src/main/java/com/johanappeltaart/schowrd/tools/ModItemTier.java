@@ -9,7 +9,7 @@ import net.minecraft.item.crafting.Ingredient;
 public enum ModItemTier implements IItemTier {
 	
 	BANANA(5,30,80.0f,10.0f,15,()->{
-		return Ingredient.fromItems(ModItems.BANANA_SCHOWRD.get());
+		return Ingredient.fromItems(ModItems.BANANA_IRON.get());
 	});
 	
 	private final int harvestLevel;
