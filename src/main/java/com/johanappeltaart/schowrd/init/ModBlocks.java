@@ -35,6 +35,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> BANANA_GRASS_BLOCK = BLOCKS.register("banana_grass_block", BananaGrassBlock::new);
     public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt", BananaDirt::new);
     public static final RegistryObject<Block> BANANA_GRAVEL = BLOCKS.register("banana_gravel", BananaGravel::new);
+    public static final RegistryObject<Block> APPLE_BLOCK = BLOCKS.register("apple_block", AppleBlock::new);
 //    public static final RegistryObject<Block> BANANA_DIRT = BLOCKS.register("banana_dirt",()-> new Block(Block.Properties.from(Blocks.DIRT)));
     public static final RegistryObject<Block> DDD_BANANA = BLOCKS.register("ddd_banana", DDD_Banana::new);
     //Chest

@@ -40,7 +40,7 @@ public class BlockposArray {
 //            blockpositions.add(context.getPos().add(0,0,0));
 //            blockpositions.add(2);
 //        }
-        LogManager.getLogger().info("bposabpos "+blockpositions);
+//        LogManager.getLogger().info("bposabpos "+blockpositions);
         return blockpositions.toArray(new BlockPos[0]);
     }
 }

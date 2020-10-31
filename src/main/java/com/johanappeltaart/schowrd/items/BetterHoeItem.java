@@ -47,8 +47,8 @@ public class BetterHoeItem extends HoeItem {
 
 
         @NotNull BlockPos[] blockpositions = BlockposArray.BlockposArrayfromNum(context,(sizeRadius-1),(sizeRadius-1));
-        LogManager.getLogger().info("bhibpos length  "+blockpositions.length);
-        LogManager.getLogger().info("sizeradios "+sizeRadius);
+//        LogManager.getLogger().info("bhibpos length  "+blockpositions.length);
+//        LogManager.getLogger().info("sizeradios "+sizeRadius);
         //49
         //25  2
         //x x+1*x+1  -1
@@ -57,7 +57,7 @@ public class BetterHoeItem extends HoeItem {
         int blockPosArrayLength = ((sizeRadius+sizeRadius-1)*(sizeRadius+sizeRadius-1)-1);
         for(int i=0;i<=blockPosArrayLength;i++) {
             BlockPos blockpos = blockpositions[i];
-            if (context.getFace() != Direction.DOWN && world.isAirBlock(blockpos.up())) {
+//            if (context.getFace() != Direction.DOWN && world.isAirBlock(blockpos.up())) {
                 BlockState blockstate = world.getBlockState(blockpos).getToolModifiedState(world, blockpos, context.getPlayer(), context.getItem(), net.minecraftforge.common.ToolType.HOE);
 
                 if (blockstate != null) {
@@ -68,7 +68,7 @@ public class BetterHoeItem extends HoeItem {
 
                     }
                 }
-            }
+//            }
                 if (i == blockPosArrayLength) {
                     if (!world.isRemote) {
                         if (playerentity != null&&tilledABlock) {

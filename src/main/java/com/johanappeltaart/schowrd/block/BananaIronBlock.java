@@ -11,7 +11,7 @@ public class BananaIronBlock extends Block {
 
 	public BananaIronBlock() {
 		super(Properties.create(Material.IRON, MaterialColor.GOLD)
-				.hardnessAndResistance(1.0f)
+				.hardnessAndResistance(5.0f,6.0f)
 				.slipperiness(1.1f)
 				.sound(SoundType.METAL)
 				.harvestLevel(1)

@@ -86,22 +86,24 @@ public class ModItems {
             () -> new BlockItemBase(ModBlocks.BANANA_FENCE_GATE.get()));
 
     //Block Items
-    public static final RegistryObject<Item>BANANA_BLOCK_ITEM = ITEMS.register("banana_block",
+    public static final RegistryObject<BlockItem>BANANA_BLOCK_ITEM = ITEMS.register("banana_block",
             () -> new BlockItemBase(ModBlocks.BANANA_BLOCK.get()));
-    public static final RegistryObject<Item>BANANA_IRON_BLOCK_ITEM = ITEMS.register("banana_iron_block",
+    public static final RegistryObject<BlockItem>BANANA_IRON_BLOCK_ITEM = ITEMS.register("banana_iron_block",
             () -> new BlockItemBase(ModBlocks.BANANA_IRON_BLOCK.get()));
-    public static final RegistryObject<Item>SECRET_BANANA_CHEST_ITEM = ITEMS.register("secret_banana_chest",
+    public static final RegistryObject<BlockItem>SECRET_BANANA_CHEST_ITEM = ITEMS.register("secret_banana_chest",
             () -> new BlockItemBase(ModBlocks.SECRET_BANANA_CHEST.get()));
-    public static final RegistryObject<Item> BANANA_GRASS_BLOCK_ITEM = ITEMS.register("banana_grass_block",
+    public static final RegistryObject<BlockItem> BANANA_GRASS_BLOCK_ITEM = ITEMS.register("banana_grass_block",
             () -> new BlockItemBase(ModBlocks.BANANA_GRASS_BLOCK.get()));
-    public static final RegistryObject<Item> BANANA_DIRT_ITEM = ITEMS.register("banana_dirt",
+    public static final RegistryObject<BlockItem> BANANA_DIRT_ITEM = ITEMS.register("banana_dirt",
             () -> new BlockItemBase(ModBlocks.BANANA_DIRT.get()));
-    public static final RegistryObject<Item> BANANA_GRAVEL_ITEM = ITEMS.register("banana_gravel",
+    public static final RegistryObject<BlockItem> BANANA_GRAVEL_ITEM = ITEMS.register("banana_gravel",
             () -> new BlockItemBase(ModBlocks.BANANA_GRAVEL.get()));
-    public static final RegistryObject<Item> DDD_BANANA_ITEM = ITEMS.register("ddd_banana",
+    public static final RegistryObject<BlockItem> DDD_BANANA_ITEM = ITEMS.register("ddd_banana",
             ()-> new DDD_Banana(ModBlocks.DDD_BANANA.get()));
-    public static final RegistryObject<Item> CARAMEL_BANANA_BLOCK_ITEM = ITEMS.register("caramel_banana_block",
+    public static final RegistryObject<BlockItem> CARAMEL_BANANA_BLOCK_ITEM = ITEMS.register("caramel_banana_block",
             ()-> new BlockItemBase(ModBlocks.CARAMEL_BANANA_BLOCK.get()));
+    public static final RegistryObject<BlockItem> APPLE_BLOCK_ITEM = ITEMS.register("apple_block",
+            () -> new BlockItemBase(ModBlocks.APPLE_BLOCK.get()));
 
 
 

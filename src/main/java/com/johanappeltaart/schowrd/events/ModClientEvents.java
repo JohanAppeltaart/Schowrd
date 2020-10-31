@@ -13,14 +13,14 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Schowrd.MOD_ID,bus = Mod.EventBusSubscriber.Bus.FORGE,value = Dist.CLIENT)
 public class ModClientEvents {
 
-    @SubscribeEvent
-    public static void onSpeedToomuch(LivingEvent.LivingJumpEvent event){
-        LivingEntity player = event.getEntityLiving();
-        if(player.getHeldItemMainhand().getItem() == ModItems.DDD_BANANA_ITEM.get()){
-            Schowrd.LOGGER.info("STICK DINGSE");
-            World world = player.getEntityWorld();
-            world.setBlockState(player.getPosition().add(0,-1,0), ModBlocks.BANANA_DOOR.get().getDefaultState());
-        };
-
-    }
+//    @SubscribeEvent
+//    public static void onSpeedToomuch(LivingEvent.LivingJumpEvent event){
+//        LivingEntity player = event.getEntityLiving();
+//        if(player.getHeldItemMainhand().getItem() == ModItems.DDD_BANANA_ITEM.get()){
+//            Schowrd.LOGGER.info("STICK DINGSE");
+//            World world = player.getEntityWorld();
+//            world.setBlockState(player.getPosition().add(0,-1,0), ModBlocks.BANANA_DOOR.get().getDefaultState());
+//        };
+//
+//    }
 }
