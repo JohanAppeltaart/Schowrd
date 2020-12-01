@@ -13,6 +13,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import java.util.ArrayList;
+
 public class AppleBlock extends Block {
     public AppleBlock() {
         super(Block.Properties.create(Material.CLAY)
@@ -24,7 +26,8 @@ public class AppleBlock extends Block {
                 .harvestTool(ToolType.HOE)
         );
     }
-
+    @SuppressWarnings("unchecked")
+    public static ArrayList<String> touchedBlock = new ArrayList();
     /**
      * Block's chance to react to a living entity falling on it.
      */
@@ -53,8 +56,6 @@ public class AppleBlock extends Block {
 
     private void bounceEntity(Entity entity) {
         Vector3d vector3d = entity.getMotion();
-//        Schowrd.LOGGER.info("speed "+vector3d.y);
-//        Schowrd.LOGGER.info(vector3d.y<-0.5D);
         if (vector3d.y < -0.52D) {
             double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
             entity.setMotion(vector3d.x, -vector3d.y * d0, vector3d.z);
@@ -63,6 +64,14 @@ public class AppleBlock extends Block {
             entity.setMotion(vector3d.x, 0, vector3d.z);
         }
 
+    }
+
+    @Override
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+        String name = entityIn.getName().toString();
+        if(!touchedBlock.contains(name))
+        touchedBlock.add(name);
+        super.onEntityWalk(worldIn, pos, entityIn);
     }
 
     /**
