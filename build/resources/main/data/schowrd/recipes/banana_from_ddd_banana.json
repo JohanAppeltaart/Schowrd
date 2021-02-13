@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "schowrd:ddd_banana"
+    }
+  ],
+  "result": {
+    "item": "schowrd:banana",
+    "count": 6
+  }
+}

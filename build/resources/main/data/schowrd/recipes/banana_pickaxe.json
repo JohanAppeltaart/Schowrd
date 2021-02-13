@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+      "xxx",
+      " y ",
+      " y "
+    ],
+    "key":{
+      "x":
+      {
+        "item": "schowrd:banana_iron"
+      },
+      "y":
+      {
+        "item":"minecraft:iron_bars"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:banana_pickaxe",
+      "count": 1
+    }
+  }

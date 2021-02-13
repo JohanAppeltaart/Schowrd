@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "schowrd:block/banana_grass_block"
+      },
+      {
+        "model": "schowrd:block/banana_grass_block",
+        "y": 90
+      },
+      {
+        "model": "schowrd:block/banana_grass_block",
+        "y": 180
+      },
+      {
+        "model": "schowrd:block/banana_grass_block",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "schowrd:block/banana_grass_block_snow"
+    }
+  }
+}

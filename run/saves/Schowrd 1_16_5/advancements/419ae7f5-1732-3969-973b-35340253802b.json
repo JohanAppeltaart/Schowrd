@@ -1,0 +1,16 @@
+{
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2021-02-14 00:23:16 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:forest": "2021-02-14 00:22:47 +0100",
+      "minecraft:plains": "2021-02-14 00:23:11 +0100"
+    },
+    "done": false
+  },
+  "DataVersion": 2586
+}

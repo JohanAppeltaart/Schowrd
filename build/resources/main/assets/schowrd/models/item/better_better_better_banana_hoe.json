@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+      "layer0": "schowrd:items/better_better_better_banana_hoe/better_better_better_banana_hoe"
+    }
+  }

@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+      "item": "schowrd:banana_on_iron"
+    },
+    "result": "schowrd:banana_iron",
+    "experience": 2.5,
+    "cookingtime": 300
+  }

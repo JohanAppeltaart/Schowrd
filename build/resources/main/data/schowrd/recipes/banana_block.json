@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+      "xxx",
+      "xxx",
+      "xxx"
+    ],
+    "key":{
+      "x":
+      {
+        "tag": "schowrd:banana"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:banana_block",
+      "count": 1
+    }
+  }

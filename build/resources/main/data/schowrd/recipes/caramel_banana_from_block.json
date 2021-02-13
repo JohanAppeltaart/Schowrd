@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "schowrd:caramel_banana_block"
+    }
+  ],
+  "result": {
+    "item": "schowrd:caramel_banana",
+    "count": 9
+  }
+}

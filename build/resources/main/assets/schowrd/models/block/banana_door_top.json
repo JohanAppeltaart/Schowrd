@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "top": "schowrd:blocks/banana_door_top",
+    "bottom": "schowrd:blocks/banana_door_bottom"
+  }
+}

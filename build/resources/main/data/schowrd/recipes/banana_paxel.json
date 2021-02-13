@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":[
+      "asp",
+      " y ",
+      " y "
+    ],
+    "key":{
+      "a":
+      {
+        "item": "schowrd:banana_axe"
+      },
+      "s":
+      {
+        "item": "schowrd:banana_shovel"
+      },
+      "p":
+      {
+        "item": "schowrd:banana_pickaxe"
+      },
+      "y":
+      {
+        "item":"minecraft:iron_bars"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:banana_paxel",
+      "count": 1
+    }
+  }

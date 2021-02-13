@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+      "xxx",
+      "xyx",
+      "xxx"
+    ],
+    "key":{
+      "x":
+      {
+        "item": "schowrd:banana_planks"
+      },
+      "y":{
+        "item": "minecraft:chest"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:secret_banana_chest",
+      "count": 1
+    }
+  }

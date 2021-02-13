@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "schowrd:caramel"
+    },
+    {
+      "item": "schowrd:baked_banana"
+    }
+  ],
+  "result": {
+    "item": "schowrd:caramel_banana"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+      "xxx",
+      "xxx",
+      "xxx"
+    ],
+    "key":{
+      "x":
+      {
+        "item": "schowrd:better_better_banana_hoe"
+      }
+    },
+    "result":
+    {
+      "item": "schowrd:better_better_better_banana_hoe",
+      "count": 1
+    }
+  }
